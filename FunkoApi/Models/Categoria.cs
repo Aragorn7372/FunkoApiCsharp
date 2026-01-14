@@ -1,3 +1,14 @@
-﻿namespace FunkoApi.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public record Categoria();
+namespace FunkoApi.Models;
+
+
+public record Categoria()
+{
+    [Key]
+    public Guid Id { get; set; } = Guid.NewGuid();
+    [Column]
+    [Required]
+    public string Nombre { get; set; }= string.Empty;
+}

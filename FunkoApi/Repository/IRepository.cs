@@ -1,6 +1,10 @@
-﻿namespace FunkoApi.Repository;
+﻿using FunkoApi.Models;
 
-public interface IRepository
+namespace FunkoApi.Repository;
+
+public interface IRepository<T,ID>
 {
+    Task<List<T>> GetAllAsync();
+    Task<T?> GetByIdAsync(ID id);
     
 }

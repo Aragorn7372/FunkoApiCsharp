@@ -1,6 +1,10 @@
-﻿namespace FunkoApi.Repository;
+﻿using FunkoApi.Models;
 
-public interface IFunkoRepository
+namespace FunkoApi.Repository;
+
+public interface IFunkoRepository : IRepository<Funko,long>
 {
-    
+    Task<Funko?> UpdateAsync(long id, Funko newFunko);
+    Task<Funko> AddAsync(Funko newFunko);
+    Task<Funko?> DeleteAsync(long id);
 }
