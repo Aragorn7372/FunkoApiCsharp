@@ -18,6 +18,6 @@ public class CategoryRepository(FunkoDbContext context) : IRepository<Categoria,
     public async Task<Categoria?> GetByIdAsync(string id)
     {
         _log.Info("gettin categorie with id {id}", id);
-        return await context.Categorias.FindAsync(id);
+        return await context.Categorias.Where(c=> c.Nombre == id).FirstOrDefaultAsync();
     }
 }

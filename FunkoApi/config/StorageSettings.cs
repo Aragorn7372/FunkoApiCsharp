@@ -1,4 +1,4 @@
-﻿namespace FunkosApi.Configuration;
+﻿namespace FunkoApi.config;
 
 public class StorageSettings
 {
