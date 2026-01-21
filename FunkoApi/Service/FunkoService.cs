@@ -1,32 +1,39 @@
 ﻿using CSharpFunctionalExtensions;
 using FunkoApi.dto;
 using FunkoApi.Error;
+using FunkoApi.handler.funko;
 using FunkoApi.Repository;
 using Microsoft.Extensions.Caching.Memory;
 using FunkoApi.mapper;
 using FunkoApi.Models;
+using FunkoApi.Repository.funkos;
 using NLog;
 
 namespace FunkoApi.Service;
 
-public class FunkoService(IMemoryCache cache, FunkoRepository repository, CategoryRepository categoryRepository)
+public class FunkoService(IMemoryCache cache, 
+    IFunkoRepository repository,
+    ICategoryRepository categoryRepository,
+    IStorageService storage,
+    FunkosWebSocketHandler webSocket,
+    ILogger<FunkoService> logger)
     : IService
 {
     private const string CacheKey = "Funko_";
-    private readonly Logger _logger=LogManager.GetCurrentClassLogger();
+  
 
     public async Task<List<FunkoResponseDto>> GetFunkosAsync()
     {
-        _logger.Info("obtener funkos");
+        logger.LogInformation("obtener funkos");
         return await Task.FromResult(repository.GetAllAsync().Result.Select(it => it.ToDto()).ToList());
     }
 
     public async Task<Result<FunkoResponseDto, FunkoError>> GetFunkoAsync(long id)
     {
-          _logger.Info("obtener funko con id: " + id);
+          logger.LogInformation("obtener funko con id: " + id);
           return cache.TryGetValue(CacheKey + id, out Funko? model)
               ? Result.Success<FunkoResponseDto, FunkoError>(model!.ToDto()).Tap(_=>
-                  _logger.Info("funko obtenido de la cache se devuelve")
+                  logger.LogInformation("funko obtenido de la cache se devuelve")
                   )
             : await repository.GetByIdAsync(id) is { } repoModel
                 ? Result.Success<FunkoResponseDto, FunkoError>(
@@ -34,24 +41,37 @@ public class FunkoService(IMemoryCache cache, FunkoRepository repository, Catego
                         CacheKey + id, repoModel, TimeSpan.FromMinutes(30)
                         ).ToDto()
                     ).Tap(_=>
-                    _logger.Info("funko obtenido y guardado en la cache con con id: " + repoModel.Id)
+                    logger.LogInformation("funko obtenido y guardado en la cache con con id: " + repoModel.Id)
                     ) 
                 : Result.Failure<FunkoResponseDto,FunkoError>(new FunkoNotFoundError("funko no encontrado con id: " + id))
-                    .TapError(_=> _logger.Warn("funko no encontrado con id: " + id));
+                    .TapError(_=> logger.LogWarning("funko no encontrado con id: " + id));
     }
 
 
-    public async Task<Result<FunkoResponseDto, FunkoError>> SaveFunkoAsync(FunkoRequestDto request)
+    public async Task<Result<FunkoResponseDto, FunkoError>> SaveFunkoAsync(FunkoRequestDto request,IFormFile? file)
     {
-        return Valida(request).Result.TryGetValue(out var categoria)?
-            await repository.AddAsync(request.ToModel(categoria)) is { } model
-            ? Result.Success<FunkoResponseDto, FunkoError>(
-                model.ToDto()
-                ).Tap(_=> _logger.Info("funko guardado en la base de datos con id:"+model.Id))
-            : Result.Failure<FunkoResponseDto, FunkoError>(
-                new FunkoError("no se pudo guardar el funko")
-                ).TapError(_=>_logger.Error("funko no ha sido guardado en la base de datos"))
-            : Result.Failure<FunkoResponseDto, FunkoError>(new FunkoValidationError("funko no ha sido valido"));
+        
+        var validationResult = await Valida(request);
+        var image = await SaveImage(file);
+        if (image.IsSuccess && image.Value != string.Empty)
+        {
+            request.Image=image.Value;
+        }
+        return validationResult.IsSuccess 
+            ? image.IsSuccess
+                ? await repository.AddAsync(request.ToModel(validationResult.Value)) is { } model
+                    ? Result.Success<FunkoResponseDto, FunkoError>(
+                         model.ToDto()
+                    ).Tap(_=>
+                    {
+                        logger.LogInformation("funko guardado en la base de datos con id:" + model.Id);
+                        NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.CREATED);
+                    })
+                    : Result.Failure<FunkoResponseDto, FunkoError>(
+                        new FunkoError("no se pudo guardar el funko")
+                    ).TapError(_=>logger.LogError("funko no ha sido guardado en la base de datos"))
+                : Result.Failure<FunkoResponseDto, FunkoError>(image.Error)
+            : Result.Failure<FunkoResponseDto, FunkoError>(validationResult.Error);
     }
 
     public async Task<Result<FunkoResponseDto, FunkoError>> DeleteFunkoAsync(long id)
@@ -60,31 +80,80 @@ public class FunkoService(IMemoryCache cache, FunkoRepository repository, Catego
         return await repository.DeleteAsync(id) is { } model
             ? Result.Success<FunkoResponseDto, FunkoError>(model.ToDto()).Tap(_=>
             {
-                _logger.Info("funko deleto con id:" + id);
+                logger.LogInformation("funko deleto con id:" + id);
                 cache.Remove(CacheKey + id);
+                NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.DELETED);
             })
             : Result.Failure<FunkoResponseDto, FunkoError>(new FunkoNotFoundError("no se encontro funko con id " + id))
-                .TapError(_=> _logger.Warn("funko no ha sido encontro funko con id: " + id));
+                .TapError(_=> logger.LogWarning("funko no ha sido encontro funko con id: " + id));
     }
 
-    public async Task<Result<FunkoResponseDto, FunkoError>> UpdateFunkoAsync(long id, FunkoRequestDto request)
-    {
-        return Valida(request).Result.TryGetValue(out var categoria)
-            ? await repository.UpdateAsync(id, request.ToModel(categoria)) is { } updateModel 
+    public async Task<Result<FunkoResponseDto, FunkoError>> UpdateFunkoAsync(long id, FunkoRequestDto request,IFormFile? file)
+    {   
+        var validationResult = await Valida(request);
+        var image = await SaveImage(file);
+        if (image.IsSuccess && image.Value != string.Empty)
+        {
+            request.Image=image.Value;
+        }
+        return validationResult.IsSuccess
+        ?image.IsSuccess
+            ? await repository.UpdateAsync(id, request.ToModel(validationResult.Value)) is { } updateModel 
             ? Result.Success<FunkoResponseDto, FunkoError>(updateModel.ToDto())
-                .Tap(_=>_logger.Info("funko valido y correctamente actualizado"))
+                .Tap(_=>
+                {
+                    logger.LogInformation("funko valido y correctamente actualizado");
+                    NotificarWebSocketFunko(updateModel.ToDto(), FunkoNotificationType.UPDATED);
+                })
             : Result.Failure<FunkoResponseDto, FunkoError>(new FunkoNotFoundError("no se pudo guardar el funko con id:" + id))
-                .TapError(_=> _logger.Warn("funko no encontrado con id:" + id))
-            : Result.Failure<FunkoResponseDto,FunkoError>(new FunkoValidationError("funko no ha sido valido"))
-                .TapError(_=> _logger.Warn("funko no ha sido valido"));
+                .TapError(_=> logger.LogWarning("funko no encontrado con id:" + id))
+            : Result.Failure<FunkoResponseDto,FunkoError>(image.Error)
+                .TapError(_=> logger.LogWarning("funko image no ha sido guardada"))
+            : Result.Failure<FunkoResponseDto,FunkoError>(validationResult.Error)
+                .TapError(_=> logger.LogWarning("funko invalido"));
     }
 
     private async Task<Result<Categoria,FunkoError>> Valida(FunkoRequestDto request)
     {
         return await categoryRepository.GetByIdAsync(request.Categoria) is { } categoria
             ? Result.Success<Categoria,FunkoError>(categoria)
-                .Tap(_=> _logger.Info("funko valido"))
+                .Tap(_=> logger.LogInformation("funko valido"))
             : Result.Failure<Categoria,FunkoError>(new FunkoValidationError("funko no valido categoria no existe")
-            ).TapError(_=> _logger.Warn("funko no ha sido valido"));
+            ).TapError(_=> logger.LogWarning("funko no ha sido valido"));
+    }
+
+    private async Task<Result<string, FunkoError>> SaveImage(IFormFile? file)
+    {
+        try
+        {
+            return file is not null
+                ? Result.Success<string,FunkoError>(await storage.StoreAsync(file))
+                : Result.Success<string,FunkoError>(string.Empty);
+        }
+        catch (Exception e)
+        {
+            return Result.Failure<string, FunkoError>(new FunkoStorageError(e.Message));
+        }
+    }
+
+    private void NotificarWebSocketFunko(FunkoResponseDto funko, string type)
+    {
+        if (type == null) throw new ArgumentNullException(nameof(type));
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await webSocket.NotifyAsync(new FunkoNotificacion(
+                    type,
+                    funko.Id,
+                    funko
+                ));
+                logger.LogDebug("Notificación WebSocket enviada tras crear Funko: {FunkoId}", funko.Id);
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Error en notificación WebSocket al crear Funko: {FunkoId}", funko.Id);
+            }
+        });
     }
 }

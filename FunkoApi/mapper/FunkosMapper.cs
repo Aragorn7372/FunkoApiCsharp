@@ -7,11 +7,15 @@ public static class FunkosMapper
 {
     public static Funko ToModel(this FunkoRequestDto dto, Categoria categoria )
     {
-        return new Funko(
+        return new Funko
+        {
+            Name = dto.Nombre,
+            Category = categoria,
+            Price = dto.Price,
+            Imagen = dto.Image ?? Funko.IMAGE_DEFAULT
+        };
 
-            dto.Nombre,
-            categoria,
-            dto.Price);
+
     }
 
     public static FunkoResponseDto ToDto(this Funko funko)
@@ -20,7 +24,8 @@ public static class FunkosMapper
             funko.Id,
             funko.Name, 
             funko.Price, 
-            funko.Category!.Nombre
+            funko.Category!.Nombre,
+            funko.Imagen
         );
     }
 }

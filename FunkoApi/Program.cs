@@ -1,71 +1,68 @@
 using System.Text;
 using FunkoApi.config;
+using FunkoApi.handler.funko;
+using FunkoApi.Infrastructures;
 using FunkoApi.Models;
 using FunkoApi.Repository;
+using FunkoApi.Repository.Category;
+using FunkoApi.Repository.funkos;
 using FunkoApi.Service;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Serilog;
+using TiendaApi.Apis.Infrastructures;
 
-
+Log.Logger= SerilogConfig.Configure().CreateLogger();
 Console.OutputEncoding = Encoding.UTF8; 
 var builder = WebApplication.CreateBuilder(args);
+//configuracion log
+builder.Host.UseSerilog();
+var services = builder.Services;
 // negociacion de serializables
-builder.Services.AddControllers(options =>
-    {
-        options.RespectBrowserAcceptHeader = true;
-        options.ReturnHttpNotAcceptable = true;
-    })
-    .AddXmlSerializerFormatters()
-    .AddXmlDataContractSerializerFormatters();
+services.AddMvcControllers();
 
 //base de datos en memoria
 builder.Services.AddDbContext<FunkoDbContext>(options =>
     options.UseInMemoryDatabase("FunkoInMemoryDb"));
 // repositorios
-builder.Services.AddScoped<IRepository<Categoria,string>,CategoryRepository>();
-builder.Services.AddScoped<IFunkoRepository, FunkoRepository>();
-// servicio
-builder.Services.AddScoped<IService, FunkoService>();
-builder.Services.AddMemoryCache();
+services.AddRepositories();
+// servicios
+services.AddServices();
+// cache
+services.AddCache();
+services.AddStorage();
+services.AddWebSockets();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-// Configurar límite de tamaño de formularios
-builder.Services.Configure<FormOptions>(options =>
-{
-    options.MultipartBodyLengthLimit = 10 * 1024 * 1024; // 10 MB
-});
 
-// Configurar límite del request body
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.Limits.MaxRequestBodySize = 10 * 1024 * 1024; // 10 MB
-});
-// storage
-builder.Services.Configure<StorageSettings>(
-    builder.Configuration.GetSection("Storage")
-);
-
-// Opcional: Singleton si solo tienes una instancia
-builder.Services.AddSingleton<IOptions<StorageSettings>>(
-    sp => Options.Create(sp.GetRequiredService<IConfiguration>()
-        .GetSection("Storage").Get<StorageSettings>())
-);
 var app = builder.Build();
-app.MapControllers();
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
+
+
+
 
 app.UseHttpsRedirection();
-app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseWebSockets();
+app.MapWebSocketEndpoints();
+app.UseStaticFiles();
+app.MapControllers();
+app.InitializeDatabaseAsync();
+app.InitializeStorage();
 
 
-app.MapStaticAssets();
-
-
-
-app.Run();
+try
+{
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "💥 La aplicación falló al iniciar");
+    throw;
+}
+finally
+{
+    Log.CloseAndFlush();
+}

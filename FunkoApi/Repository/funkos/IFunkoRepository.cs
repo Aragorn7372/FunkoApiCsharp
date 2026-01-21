@@ -1,6 +1,6 @@
 ﻿using FunkoApi.Models;
 
-namespace FunkoApi.Repository;
+namespace FunkoApi.Repository.funkos;
 
 public interface IFunkoRepository : IRepository<Funko,long>
 {

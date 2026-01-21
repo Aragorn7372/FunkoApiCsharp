@@ -8,3 +8,4 @@ public record FunkoError(
 public record FunkoNotFoundError(string error) : FunkoError(error);
 public record FunkoBadRequestError(string error) : FunkoError(error);
 public record FunkoValidationError(string error) : FunkoError(error);
+public record FunkoStorageError(string error) : FunkoError(error);

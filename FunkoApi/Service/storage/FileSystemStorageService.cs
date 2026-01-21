@@ -1,4 +1,5 @@
 ﻿using FunkoApi.config;
+using FunkoApi.exception;
 using Microsoft.Extensions.Options;
 
 namespace FunkoApi.Service;
@@ -161,7 +162,7 @@ public class FileSystemStorageService : IStorageService
         if (!File.Exists(filePath))
             return false;
 
-        File.Delete(filePath);
+        await Task.Run(() => File.Delete(filePath), cancellationToken);
         _logger.LogInformation("Archivo eliminado: {FileName}", fileName);
         
         return true;
@@ -175,7 +176,7 @@ public class FileSystemStorageService : IStorageService
         
         if (Directory.Exists(folderPath))
         {
-            CleanDirectory(folderPath);
+            await Task.Run(() => CleanDirectory(folderPath), cancellationToken);
             _logger.LogInformation("Todos los archivos eliminados de: {Folder}", folderPath);
         }
     }
@@ -188,7 +189,9 @@ public class FileSystemStorageService : IStorageService
             return Task.FromResult<IEnumerable<string>>(Array.Empty<string>());
 
         var files = Directory.GetFiles(folderPath)
-            .Select(Path.GetFileName);
+            .Select(Path.GetFileName)
+            .Where(name => name is not null)!
+            .Select(name => name!);
         
         return Task.FromResult(files);
     }

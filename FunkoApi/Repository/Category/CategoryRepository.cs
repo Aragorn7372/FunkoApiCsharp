@@ -3,9 +3,9 @@ using FunkoApi.Models;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 
-namespace FunkoApi.Repository;
+namespace FunkoApi.Repository.Category;
 
-public class CategoryRepository(FunkoDbContext context) : IRepository<Categoria,string>
+public class CategoryRepository(FunkoDbContext context) : ICategoryRepository
 {
     private static Logger _log= LogManager.GetCurrentClassLogger();
 

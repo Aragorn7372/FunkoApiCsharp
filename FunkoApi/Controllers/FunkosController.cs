@@ -38,33 +38,57 @@ public class FunkosController(IService service):ControllerBase
     }
 
     [HttpPost]
+    [Consumes("multipart/form-data")]
     [ProducesResponseType(typeof(FunkoResponseDto), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> PostAsync([FromBody] FunkoRequestDto request)
+    public async Task<IActionResult> PostAsync([FromForm] string nombre,
+        [FromForm] double price,
+        [FromForm] string categoria,
+        [FromForm] IFormFile? file)
     {
-        return await service.SaveFunkoAsync(request).Match(
-            onSuccess: response => CreatedAtAction(nameof(GetAsync), new { id = response.Id }, response),
+        var request = new FunkoRequestDto
+        {
+            Nombre = nombre,
+            Price = price,
+            Categoria = categoria
+        };
+        return await service.SaveFunkoAsync(request,file).Match(
+            onSuccess: response => Created($"/api/funkos/{response.Id}", response), 
             onFailure: error => error switch
             {
                 FunkoValidationError => BadRequest(new { message = error.Error }),
+                FunkoStorageError => BadRequest(new { message = error.Error }),
                 _ => StatusCode(500, new { message = error.Error })
             });
     }
 
     [HttpPut("{id}")]
+    [Consumes("multipart/form-data")]
     [ProducesResponseType(typeof(FunkoResponseDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> PutAsync(long id, [FromBody] FunkoRequestDto request)
+    public async Task<IActionResult> PutAsync(
+        long id, 
+        [FromForm] string nombre,
+        [FromForm] double price,
+        [FromForm] string categoria,
+        IFormFile? file)
     {
-        return await service.UpdateFunkoAsync(id, request).Match(
+        var request = new FunkoRequestDto
+        {
+            Nombre = nombre,
+            Price = price,
+            Categoria = categoria
+        };
+        return await service.UpdateFunkoAsync(id, request,file).Match(
             onSuccess: response => Ok(response),
             onFailure: error => error switch
             {
                 FunkoValidationError => BadRequest(new { message = error.Error }),
                 FunkoNotFoundError => NotFound(new { message = error.Error }),
+                FunkoStorageError => BadRequest(new { message = error.Error }),
                 _ => StatusCode(500, new { message = error.Error })
             });
     }
@@ -83,6 +107,4 @@ public class FunkosController(IService service):ControllerBase
                 _ => StatusCode(500, new { message = error.Error })
             });
     }
-    
-    
 }
