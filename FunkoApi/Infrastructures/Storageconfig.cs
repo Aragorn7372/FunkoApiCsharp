@@ -1,4 +1,5 @@
 ﻿using FunkoApi.Service;
+using FunkoApi.Service.storage;
 using Serilog;
 
 namespace FunkoApi.Infrastructures;

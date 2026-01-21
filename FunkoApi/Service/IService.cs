@@ -1,7 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 using FunkoApi.dto;
 using FunkoApi.Error;
-using FunkoApi.Models;
 
 namespace FunkoApi.Service;
 

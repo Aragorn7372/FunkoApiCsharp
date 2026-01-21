@@ -1,18 +1,8 @@
 using System.Text;
 using FunkoApi.config;
-using FunkoApi.handler.funko;
 using FunkoApi.Infrastructures;
-using FunkoApi.Models;
-using FunkoApi.Repository;
-using FunkoApi.Repository.Category;
-using FunkoApi.Repository.funkos;
-using FunkoApi.Service;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Serilog;
-using TiendaApi.Apis.Infrastructures;
 
 Log.Logger= SerilogConfig.Configure().CreateLogger();
 Console.OutputEncoding = Encoding.UTF8; 

@@ -2,7 +2,7 @@
 using FunkoApi.exception;
 using Microsoft.Extensions.Options;
 
-namespace FunkoApi.Service;
+namespace FunkoApi.Service.storage;
 
 public class FileSystemStorageService : IStorageService
 {
@@ -190,7 +190,7 @@ public class FileSystemStorageService : IStorageService
 
         var files = Directory.GetFiles(folderPath)
             .Select(Path.GetFileName)
-            .Where(name => name is not null)!
+            .Where(name => name is not null)
             .Select(name => name!);
         
         return Task.FromResult(files);

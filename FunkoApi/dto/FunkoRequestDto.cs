@@ -2,7 +2,7 @@
 
 namespace FunkoApi.dto;
 
-public record FunkoRequestDto()
+public record FunkoRequestDto
 {
     [Required(ErrorMessage = "Ingrese un nombre valido de funko")]
     [StringLength(100,MinimumLength = 2, ErrorMessage = "Ingrese un nombre entre2 y 100 caracteres")]

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FunkoApi.Models;
 
 
-public record Categoria()
+public record Categoria
 {
     [Key]
     public Guid Id { get; set; } = Guid.NewGuid();

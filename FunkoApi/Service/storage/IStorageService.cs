@@ -1,4 +1,4 @@
-﻿namespace FunkoApi.Service;
+﻿namespace FunkoApi.Service.storage;
 
 /// <summary>
 /// Interfaz para el servicio de almacenamiento de archivos

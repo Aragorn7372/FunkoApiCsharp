@@ -1,6 +1,7 @@
-﻿using Serilog;
+﻿using FunkoApi.handler.funko;
+using Serilog;
 
-namespace FunkoApi.handler.funko;
+namespace FunkoApi.Infrastructures;
 
 /// <summary>
 /// Extension methods para WebSockets.

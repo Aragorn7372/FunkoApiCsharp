@@ -5,7 +5,7 @@ public record FunkoError(
 {
     public string Error { get; set; } = Error;
 };
-public record FunkoNotFoundError(string error) : FunkoError(error);
-public record FunkoBadRequestError(string error) : FunkoError(error);
-public record FunkoValidationError(string error) : FunkoError(error);
-public record FunkoStorageError(string error) : FunkoError(error);
+public record FunkoNotFoundError(string Error) : FunkoError(Error);
+public record FunkoBadRequestError(string Error) : FunkoError(Error);
+public record FunkoValidationError(string Error) : FunkoError(Error);
+public record FunkoStorageError(string Error) : FunkoError(Error);

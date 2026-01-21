@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Serilog;
+﻿using Serilog;
 
-namespace TiendaApi.Apis.Infrastructures;
+namespace FunkoApi.Infrastructures;
 
 /// <summary>
 /// Extensiones de configuración de controladores MVC y validación FluentValidation.

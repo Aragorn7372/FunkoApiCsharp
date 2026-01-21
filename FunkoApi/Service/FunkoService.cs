@@ -2,12 +2,12 @@
 using FunkoApi.dto;
 using FunkoApi.Error;
 using FunkoApi.handler.funko;
-using FunkoApi.Repository;
 using Microsoft.Extensions.Caching.Memory;
 using FunkoApi.mapper;
 using FunkoApi.Models;
+using FunkoApi.Repository.Category;
 using FunkoApi.Repository.funkos;
-using NLog;
+using FunkoApi.Service.storage;
 
 namespace FunkoApi.Service;
 
@@ -65,7 +65,7 @@ public class FunkoService(IMemoryCache cache,
                     ).Tap(_=>
                     {
                         logger.LogInformation("funko guardado en la base de datos con id:" + model.Id);
-                        NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.CREATED);
+                        NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.Created);
                     })
                     : Result.Failure<FunkoResponseDto, FunkoError>(
                         new FunkoError("no se pudo guardar el funko")
@@ -82,7 +82,7 @@ public class FunkoService(IMemoryCache cache,
             {
                 logger.LogInformation("funko deleto con id:" + id);
                 cache.Remove(CacheKey + id);
-                NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.DELETED);
+                NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.Deleted);
             })
             : Result.Failure<FunkoResponseDto, FunkoError>(new FunkoNotFoundError("no se encontro funko con id " + id))
                 .TapError(_=> logger.LogWarning("funko no ha sido encontro funko con id: " + id));
@@ -103,7 +103,7 @@ public class FunkoService(IMemoryCache cache,
                 .Tap(_=>
                 {
                     logger.LogInformation("funko valido y correctamente actualizado");
-                    NotificarWebSocketFunko(updateModel.ToDto(), FunkoNotificationType.UPDATED);
+                    NotificarWebSocketFunko(updateModel.ToDto(), FunkoNotificationType.Updated);
                 })
             : Result.Failure<FunkoResponseDto, FunkoError>(new FunkoNotFoundError("no se pudo guardar el funko con id:" + id))
                 .TapError(_=> logger.LogWarning("funko no encontrado con id:" + id))

@@ -1,15 +1,15 @@
 ﻿namespace FunkoApi.dto;
 
 public record FunkoResponseDto(
-    long id,
-    string nombre,
-    double precio,
-    string categoria,
-    string imagen)
+    long Id,
+    string Nombre,
+    double Precio,
+    string Categoria,
+    string Imagen)
 {
-    public long Id  = id;
-    public string Nombre  = nombre;
-    public double Precio  = precio;
-    public string Categoria = categoria;
-    public string Imagen = imagen;
+    public long Id  = Id;
+    public string Nombre  = Nombre;
+    public double Precio  = Precio;
+    public string Categoria = Categoria;
+    public string Imagen = Imagen;
 };

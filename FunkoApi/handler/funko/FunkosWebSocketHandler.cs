@@ -14,17 +14,17 @@ public class FunkoNotificationType
     /// <summary>
     /// Notificación de funko creado.
     /// </summary>
-    public const string CREATED = "FUNKO_CREADO";
+    public const string Created = "FUNKO_CREADO";
 
     /// <summary>
     /// Notificación de funko actualizado.
     /// </summary>
-    public const string UPDATED = "FUNKO_ACTUALIZADO";
+    public const string Updated = "FUNKO_ACTUALIZADO";
 
     /// <summary>
     /// Notificación de funko eliminado.
     /// </summary>
-    public const string DELETED = "FUNKO_ELIMINADO";
+    public const string Deleted = "FUNKO_ELIMINADO";
 }
 
 /// <summary>
