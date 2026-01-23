@@ -1,4 +1,5 @@
-﻿using FunkoApi.handler.funko;
+﻿using FunkoApi.Handler.Categorias;
+using FunkoApi.Handler.Funkos;
 using Serilog;
 
 namespace FunkoApi.Infrastructures;
@@ -25,6 +26,6 @@ public static class WebSocketsConfig
         Log.Information("🔌 Registrando handlers de WebSocket...");
         return services
             .AddSingleton<FunkosWebSocketHandler>()
-            .AddSingleton<FunkosWebSocketHandler>();
+            .AddSingleton<CategoriaWebSocketHandler>();
     }
 }

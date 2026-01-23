@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FunkoApi.dto;
+namespace FunkoApi.Dto.Funkasos;
 
 public record FunkoRequestDto
 {

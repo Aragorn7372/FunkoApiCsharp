@@ -1,4 +1,5 @@
-﻿using FunkoApi.handler.funko;
+﻿using FunkoApi.Handler.Categorias;
+using FunkoApi.Handler.Funkos;
 using Serilog;
 
 namespace FunkoApi.Infrastructures;
@@ -41,7 +42,7 @@ public static class WebSocketExtensions
             if (context.WebSockets.IsWebSocketRequest)
             {
                 var ws = await context.WebSockets.AcceptWebSocketAsync();
-                var handler = context.RequestServices.GetRequiredService<FunkosWebSocketHandler>();
+                var handler = context.RequestServices.GetRequiredService<CategoriaWebSocketHandler>();
                 await handler.HandleConnectionAsync(context, ws);
             }
             else context.Response.StatusCode = 400;

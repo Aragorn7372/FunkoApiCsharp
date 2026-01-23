@@ -1,4 +1,6 @@
 ﻿using FunkoApi.Service;
+using FunkoApi.Service.Category;
+using FunkoApi.Service.Funkos;
 using Serilog;
 
 namespace FunkoApi.Infrastructures;
@@ -15,6 +17,7 @@ public static class ServicesConfig
     {
         Log.Information("⚙️ Registrando servicios...");
         return services
-            .AddScoped<IService, FunkoService>();
+            .AddScoped<IFunkoService, FunkoFunkoService>()
+            .AddScoped<ICategoriaService, CategoriaService>();
     }
 }

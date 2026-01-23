@@ -2,9 +2,10 @@
 using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
-using FunkoApi.dto;
+using FunkoApi.Dto;
+using FunkoApi.Dto.Funkasos;
 
-namespace FunkoApi.handler.funko;
+namespace FunkoApi.Handler.Funkos;
 
 /// <summary>
 /// Tipos de notificación para eventos de funkos.

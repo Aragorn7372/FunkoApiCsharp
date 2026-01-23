@@ -2,7 +2,7 @@
 using System.Net.WebSockets;
 using System.Text;
 
-namespace FunkoApi.handler.funko;
+namespace FunkoApi.Handler.Funkos;
 
 public class WebSocketConnectionManager(ILogger<WebSocketConnectionManager> logger)
 {

@@ -19,7 +19,7 @@ public static class ControllersConfig
                 options.ReturnHttpNotAcceptable = true;
             }).AddJsonOptions(options =>
             {
-                options. JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             })
             .AddXmlSerializerFormatters()
             .AddXmlDataContractSerializerFormatters();

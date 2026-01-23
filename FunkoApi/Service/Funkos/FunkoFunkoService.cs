@@ -1,23 +1,23 @@
 ﻿using CSharpFunctionalExtensions;
-using FunkoApi.dto;
+using FunkoApi.Dto.Funkasos;
 using FunkoApi.Error;
-using FunkoApi.handler.funko;
-using Microsoft.Extensions.Caching.Memory;
+using FunkoApi.Handler.Funkos;
 using FunkoApi.mapper;
 using FunkoApi.Models;
 using FunkoApi.Repository.Category;
 using FunkoApi.Repository.funkos;
+using FunkoApi.Service.Cache;
 using FunkoApi.Service.storage;
 
-namespace FunkoApi.Service;
+namespace FunkoApi.Service.Funkos;
 
-public class FunkoService(IMemoryCache cache, 
+public class FunkoFunkoService(ICacheService cache, 
     IFunkoRepository repository,
     ICategoryRepository categoryRepository,
     IStorageService storage,
     FunkosWebSocketHandler webSocket,
-    ILogger<FunkoService> logger)
-    : IService
+    ILogger<FunkoFunkoService> logger)
+    : IFunkoService
 {
     private const string CacheKey = "Funko_";
   
@@ -31,18 +31,17 @@ public class FunkoService(IMemoryCache cache,
     public async Task<Result<FunkoResponseDto, FunkoError>> GetFunkoAsync(long id)
     {
           logger.LogInformation("obtener funko con id: " + id);
-          return cache.TryGetValue(CacheKey + id, out Funko? model)
-              ? Result.Success<FunkoResponseDto, FunkoError>(model!.ToDto()).Tap(_=>
+          return await cache.GetAsync<Funko>(CacheKey + id) is { } model
+              ? Result.Success<FunkoResponseDto, FunkoError>(model.ToDto()).Tap(_=>
                   logger.LogInformation("funko obtenido de la cache se devuelve")
                   )
             : await repository.GetByIdAsync(id) is { } repoModel
-                ? Result.Success<FunkoResponseDto, FunkoError>(
-                    cache.Set(
-                        CacheKey + id, repoModel, TimeSpan.FromMinutes(30)
-                        ).ToDto()
-                    ).Tap(_=>
-                    logger.LogInformation("funko obtenido y guardado en la cache con con id: " + repoModel.Id)
-                    ) 
+                ? Result.Success<FunkoResponseDto, FunkoError>(repoModel.ToDto())
+                    .Tap(_=>
+                    {
+                        cache.SetAsync(CacheKey + id, repoModel, TimeSpan.FromMinutes(30));
+                        logger.LogInformation("funko obtenido y guardado en la cache con con id: " + repoModel.Id);
+                    }) 
                 : Result.Failure<FunkoResponseDto,FunkoError>(new FunkoNotFoundError("funko no encontrado con id: " + id))
                     .TapError(_=> logger.LogWarning("funko no encontrado con id: " + id));
     }
@@ -81,7 +80,7 @@ public class FunkoService(IMemoryCache cache,
             ? Result.Success<FunkoResponseDto, FunkoError>(model.ToDto()).Tap(_=>
             {
                 logger.LogInformation("funko deleto con id:" + id);
-                cache.Remove(CacheKey + id);
+                cache.RemoveAsync(CacheKey + id);
                 NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.Deleted);
             })
             : Result.Failure<FunkoResponseDto, FunkoError>(new FunkoNotFoundError("no se encontro funko con id " + id))

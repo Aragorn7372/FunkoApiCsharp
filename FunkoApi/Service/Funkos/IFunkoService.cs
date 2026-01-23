@@ -1,10 +1,11 @@
 ﻿using CSharpFunctionalExtensions;
-using FunkoApi.dto;
+using FunkoApi.Dto;
+using FunkoApi.Dto.Funkasos;
 using FunkoApi.Error;
 
-namespace FunkoApi.Service;
+namespace FunkoApi.Service.Funkos;
 
-public interface IService
+public interface IFunkoService
 {
     Task<List<FunkoResponseDto>> GetFunkosAsync();
     Task<Result<FunkoResponseDto,FunkoError>> GetFunkoAsync(long id);

@@ -1,4 +1,5 @@
-﻿using FunkoApi.dto;
+﻿using FunkoApi.Dto;
+using FunkoApi.Dto.Funkasos;
 using FunkoApi.Models;
 
 namespace FunkoApi.mapper;

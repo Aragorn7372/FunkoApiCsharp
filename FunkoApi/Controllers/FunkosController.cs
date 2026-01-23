@@ -1,8 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
-using FunkoApi.dto;
-using FunkoApi.Error;
-using FunkoApi.Service;
 
+using FunkoApi.Dto;
+using FunkoApi.Dto.Funkasos;
+using FunkoApi.Error;
+using FunkoApi.Service.Funkos;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -12,13 +13,13 @@ namespace FunkoApi.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
-public class FunkosController(IService service):ControllerBase
+public class FunkosController(IFunkoService funkoService):ControllerBase
 {
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<FunkoResponseDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAsync()
     {
-        return Ok(await service.GetFunkosAsync());
+        return Ok(await funkoService.GetFunkosAsync());
     }
 
     [HttpGet("{id}")]
@@ -28,7 +29,7 @@ public class FunkosController(IService service):ControllerBase
     public async Task<IActionResult> GetAsync(long id)
     {
         
-        return await service.GetFunkoAsync(id).Match(
+        return await funkoService.GetFunkoAsync(id).Match(
             onSuccess: response => Ok(response),
             onFailure: error=> error switch
             {
@@ -53,7 +54,7 @@ public class FunkosController(IService service):ControllerBase
             Price = price,
             Categoria = categoria
         };
-        return await service.SaveFunkoAsync(request,file).Match(
+        return await funkoService.SaveFunkoAsync(request,file).Match(
             onSuccess: response => Created($"/api/funkos/{response.Id}", response), 
             onFailure: error => error switch
             {
@@ -82,7 +83,7 @@ public class FunkosController(IService service):ControllerBase
             Price = price,
             Categoria = categoria
         };
-        return await service.UpdateFunkoAsync(id, request,file).Match(
+        return await funkoService.UpdateFunkoAsync(id, request,file).Match(
             onSuccess: response => Ok(response),
             onFailure: error => error switch
             {
@@ -99,7 +100,7 @@ public class FunkosController(IService service):ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> DeleteAsync(long id)
     {
-        return await service.DeleteFunkoAsync(id).Match(
+        return await funkoService.DeleteFunkoAsync(id).Match(
             onSuccess: response => Ok(response),
             onFailure: error => error switch
             {

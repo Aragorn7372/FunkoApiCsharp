@@ -1,4 +1,4 @@
-﻿namespace FunkoApi.dto;
+﻿namespace FunkoApi.Dto.Funkasos;
 
 public record FunkoResponseDto(
     long Id,
