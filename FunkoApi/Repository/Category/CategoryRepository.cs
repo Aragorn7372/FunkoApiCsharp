@@ -12,7 +12,13 @@ public class CategoryRepository(FunkoDbContext context,ILogger<CategoryRepositor
         log.LogInformation("Getting all categorias");
         return await context.Categorias.ToListAsync();
     }
-
+    public IQueryable<Categoria> FindAllAsNoTracking()
+    {
+        log.LogDebug("Obteniendo categorías como IQueryable");
+        return context.Categorias
+            .OrderBy(c => c.Nombre)
+            .AsNoTracking();
+    }
     public async Task<Categoria?> GetByIdAsync(string id)
     {
         log.LogInformation("gettin categorie with id {id}", id);

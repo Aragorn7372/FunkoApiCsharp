@@ -1,6 +1,8 @@
 ﻿using CSharpFunctionalExtensions;
 using FunkoApi.Dto.Funkasos;
 using FunkoApi.Error;
+using FunkoApi.Graphql.Events;
+using FunkoApi.Graphql.Publishers;
 using FunkoApi.Handler.Funkos;
 using FunkoApi.mapper;
 using FunkoApi.Models;
@@ -16,7 +18,9 @@ public class FunkoFunkoService(ICacheService cache,
     ICategoryRepository categoryRepository,
     IStorageService storage,
     FunkosWebSocketHandler webSocket,
-    ILogger<FunkoFunkoService> logger)
+    ILogger<FunkoFunkoService> logger,
+    IEventPublisher eventPublisher
+    )
     : IFunkoService
 {
     private const string CacheKey = "Funko_";
@@ -65,6 +69,7 @@ public class FunkoFunkoService(ICacheService cache,
                     {
                         logger.LogInformation("funko guardado en la base de datos con id:" + model.Id);
                         NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.Created);
+                        EventoSuscripcionFunkoCreado(model.ToDto());
                     })
                     : Result.Failure<FunkoResponseDto, FunkoError>(
                         new FunkoError("no se pudo guardar el funko")
@@ -82,6 +87,7 @@ public class FunkoFunkoService(ICacheService cache,
                 logger.LogInformation("funko deleto con id:" + id);
                 cache.RemoveAsync(CacheKey + id);
                 NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.Deleted);
+                EventoSuscripcionFunkoEliminado(model.Id);
             })
             : Result.Failure<FunkoResponseDto, FunkoError>(new FunkoNotFoundError("no se encontro funko con id " + id))
                 .TapError(_=> logger.LogWarning("funko no ha sido encontro funko con id: " + id));
@@ -103,6 +109,7 @@ public class FunkoFunkoService(ICacheService cache,
                 {
                     logger.LogInformation("funko valido y correctamente actualizado");
                     NotificarWebSocketFunko(updateModel.ToDto(), FunkoNotificationType.Updated);
+                    EventoSuscripcionFunkoActualizado(updateModel.ToDto());
                 })
             : Result.Failure<FunkoResponseDto, FunkoError>(new FunkoNotFoundError("no se pudo guardar el funko con id:" + id))
                 .TapError(_=> logger.LogWarning("funko no encontrado con id:" + id))
@@ -152,6 +159,78 @@ public class FunkoFunkoService(ICacheService cache,
             catch (Exception ex)
             {
                 logger.LogWarning(ex, "Error en notificación WebSocket al crear Funko: {FunkoId}", funko.Id);
+            }
+        });
+    }
+      /// <summary>
+    /// Publica evento de GraphQL Subscription cuando se crea un funko.
+    /// </summary>
+    private void EventoSuscripcionFunkoCreado(FunkoResponseDto funko)
+    {
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await eventPublisher.PublishAsync("onFunkoCreado", new FunkoCreadoEvent()
+                {
+                    FunkoId = funko.Id,
+                    Nombre = funko.Nombre,
+                    Precio = funko.Precio,
+                    CreatedAt = DateTime.UtcNow
+                });
+                logger.LogDebug("Evento GraphQL Subscription enviado tras crear Funko: {FunkoId}", funko.Id);
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Error publicando evento GraphQL Subscription al crear Funko: {FunkoId}", funko.Id);
+            }
+        });
+    }
+
+    /// <summary>
+    /// Publica evento de GraphQL Subscription cuando se actualiza un funko.
+    /// </summary>
+    private void EventoSuscripcionFunkoActualizado(FunkoResponseDto funko)
+    {
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await eventPublisher.PublishAsync("onFunkoActualizado", new FunkoActualizadoEvent
+                {
+                    FunkoId = funko.Id,
+                    Nombre = funko.Nombre,
+                    Precio = funko.Precio,
+                    UpdatedAt = DateTime.UtcNow
+                });
+                logger.LogDebug("Evento GraphQL Subscription enviado tras actualizar Funko: {FunkoId}", funko.Id);
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Error publicando evento GraphQL Subscription al actualizar Funko: {FunkoId}", funko.Id);
+            }
+        });
+    }
+
+    /// <summary>
+    /// Publica evento de GraphQL Subscription cuando se elimina un Funko.
+    /// </summary>
+    private void EventoSuscripcionFunkoEliminado(long funkoId)
+    {
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await eventPublisher.PublishAsync("onFunkoEliminado", new FunkoEliminadoEvent
+                {
+                    FunkoId = funkoId,
+                    DeletedAt = DateTime.UtcNow
+                });
+                logger.LogDebug("Evento GraphQL Subscription enviado tras eliminar Funko: {FunkoId}", funkoId);
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Error publicando evento GraphQL Subscription al eliminar Funko: {FunkoId}", funkoId);
             }
         });
     }

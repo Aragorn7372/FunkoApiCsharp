@@ -7,4 +7,5 @@ public interface ICategoryRepository : IRepository<Categoria,string>
     Task<Categoria?> UpdateAsync(Guid id, Categoria categoria);
 
     Task<Categoria?> DeleteAsync(Guid id);
+    IQueryable<Categoria> FindAllAsNoTracking();
 }

@@ -24,6 +24,14 @@ public class FunkoRepository(FunkoDbContext context,ILogger<FunkoRepository> log
             .Include(f => f.Category)
             .FirstOrDefaultAsync(f => f.Id == id);
     }
+    public IQueryable<Funko> FindAllAsNoTracking()
+    {
+        log.LogDebug("Obteniendo productos como IQueryable");
+        return context.Funkos
+            .Include(p => p.Category)
+            .OrderBy(p => p.Name)
+            .AsNoTracking();
+    }
 
     public async Task<Funko?> UpdateAsync(long id, Funko newFunko)
     {

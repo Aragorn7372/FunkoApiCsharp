@@ -1,4 +1,6 @@
-﻿namespace FunkoApi.config;
+﻿using Path = System.IO.Path;
+
+namespace FunkoApi.config;
 
 public class StorageSettings
 {

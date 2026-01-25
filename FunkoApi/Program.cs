@@ -22,14 +22,19 @@ services.AddRepositories();
 services.AddServices();
 // cache
 services.AddCache();
+services.AddEmail(builder.Environment);
+
 services.AddStorage();
 services.AddWebSockets();
+services.AddGraphQL(builder.Environment);
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
 
+app.UseGraphiQL();
 
 
 app.UseHttpsRedirection();
@@ -41,7 +46,7 @@ app.UseStaticFiles();
 app.MapControllers();
 app.InitializeDatabaseAsync();
 app.InitializeStorage();
-
+app.MapGraphQL();
 
 try
 {
