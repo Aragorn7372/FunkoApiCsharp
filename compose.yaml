@@ -1,7 +1,56 @@
 ﻿services:
-  funkoapi:
-    image: funkoapi
+  app:
     build:
-      context: .
-      dockerfile: FunkoApi/Dockerfile
+      context: ./FunkoApi
+      dockerfile: Dockerfile
+      target: final
+    volumes:
+      - ./storage-dir/system-images:/app/system-images
+    restart: always
+    env_file: .env
+    environment: 
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DATABASE};Username=${DATABASE_USER};Password=${DATABASE_PASSWORD}
+      - ASPNETCORE_URLS=http://+:8080
+    depends_on:
+      - redis
+    ports:
+      - "8080:8080"
+    networks:
+      - webnet
 
+  redis:
+    image: redis:7-alpine
+    restart: always
+    env_file: .env
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis-data:/data
+    ports:
+      - ${REDIS_PORT}:6379
+    networks:
+      - webnet
+    # PostgresSQL
+  postgres:
+    image: postgres:12-alpine
+    restart: always
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
+volumes:
+  storage-dir:
+  mongo-data:
+  redis-data:
+  postgres-data:
