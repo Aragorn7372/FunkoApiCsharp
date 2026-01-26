@@ -2,7 +2,6 @@
 using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
-using FunkoApi.Dto;
 using FunkoApi.Dto.Funkasos;
 
 namespace FunkoApi.Handler.Funkos;

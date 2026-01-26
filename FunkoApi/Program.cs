@@ -1,6 +1,7 @@
 using System.Text;
 using FunkoApi.config;
 using FunkoApi.Infrastructures;
+using FunkoApi.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -13,9 +14,12 @@ var services = builder.Services;
 // negociacion de serializables
 services.AddMvcControllers();
 
-//base de datos en memoria
+//base de datos en possgress
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<FunkoDbContext>(options =>
-    options.UseInMemoryDatabase("FunkoInMemoryDb"));
+    options.UseNpgsql(connectionString));
+// Auth
+services.AddAuthentication(builder.Configuration);
 // repositorios
 services.AddRepositories();
 // servicios
@@ -35,8 +39,8 @@ var app = builder.Build();
 
 
 app.UseGraphiQL();
-
-
+app.UseGlobalExceptionHandler();
+app.UseCorsPolicy();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,10 +1,6 @@
-﻿using FunkoApi.Graphql.Publishers;
-using HotChocolate;
-using HotChocolate.Execution;
-using HotChocolate.Resolvers;
-using HotChocolate.Subscriptions;
+﻿using HotChocolate.Subscriptions;
 
-namespace TiendaApi.Api.GraphQL.Publishers;
+namespace FunkoApi.Graphql.Publishers;
 
 /// <summary>
 /// Implementación de IEventPublisher usando HotChocolate Pub/Sub.
@@ -26,7 +22,7 @@ public class EventPublisher : IEventPublisher
 public static class EventPublisherExtensions
 {
     /// <summary>Registra servicios de Pub/Sub de GraphQL.</summary>
-    public static IServiceCollection AddGraphQLPubSub(this IServiceCollection services)
+    public static IServiceCollection AddGraphQlPubSub(this IServiceCollection services)
     {
         services.AddSingleton<IEventPublisher, EventPublisher>();
         return services;

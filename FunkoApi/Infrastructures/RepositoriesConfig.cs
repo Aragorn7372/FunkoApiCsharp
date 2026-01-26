@@ -1,6 +1,6 @@
-﻿using FunkoApi.Repository;
-using FunkoApi.Repository.Category;
+﻿using FunkoApi.Repository.Category;
 using FunkoApi.Repository.funkos;
+using FunkoApi.Repository.Users;
 using Serilog;
 
 namespace FunkoApi.Infrastructures;
@@ -29,6 +29,7 @@ public static class RepositoriesConfig
         // Repositorios que no dependen de MongoDB
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IFunkoRepository, FunkoRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

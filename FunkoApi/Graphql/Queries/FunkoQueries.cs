@@ -19,14 +19,14 @@ public class FunkoQuery
 
     /// <summary>Obtiene un funko por ID.</summary>
     /// <param name="id">ID del funko.</param>
-    /// <param name="FunkoRepository">Repositorio de funkos.</param>
+    /// <param name="funkoRepository">Repositorio de funkos.</param>
     /// <returns>funko encontrado o null.</returns>
     [UseFirstOrDefault]
     public async Task<Funko?> GetFunko(long id, [Service] IFunkoRepository funkoRepository) =>
         await funkoRepository.GetByIdAsync(id);
 
     /// <summary>Obtiene funkos paginados.</summary>
-    /// <param name="FunkoRepository">Repositorio de funkos.</param>
+    /// <param name="funkoRepository">Repositorio de funkos.</param>
     /// <returns>IQueryable de funkos paginados.</returns>
     [UsePaging(MaxPageSize = 100, DefaultPageSize = 10)]
     public IQueryable<Funko> GetFunkosPaged([Service] IFunkoRepository funkoRepository) =>

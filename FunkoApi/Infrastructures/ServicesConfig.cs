@@ -1,7 +1,9 @@
 ﻿using FunkoApi.Service;
+using FunkoApi.Service.auth;
 using FunkoApi.Service.Category;
 using FunkoApi.Service.Funkos;
 using Serilog;
+using TiendaApi.Api.Services.Auth;
 
 namespace FunkoApi.Infrastructures;
 
@@ -18,6 +20,9 @@ public static class ServicesConfig
         Log.Information("⚙️ Registrando servicios...");
         return services
             .AddScoped<IFunkoService, FunkoFunkoService>()
-            .AddScoped<ICategoriaService, CategoriaService>();
+            .AddScoped<ICategoriaService, CategoriaService>()
+            .AddScoped<IJwtService, JwtService>()
+            .AddScoped<IJwtTokenExtractor, JwtTokenExtractor>()
+            .AddScoped<IAuthService, AuthService>();
     }
 }

@@ -5,7 +5,7 @@ namespace FunkoApi.config;
 public class StorageSettings
 {
     /// <summary>
-    /// Ruta base donde se guardarán los archivos
+    /// Ruta base donde se guardan los archivos
     /// </summary>
     public string RootPath { get; set; } = "wwwroot/uploads";
     
@@ -15,9 +15,9 @@ public class StorageSettings
     public bool DeleteOnStartup { get; set; }
     
     /// <summary>
-    /// Tamaño máximo permitido en bytes (5 MB por defecto)
+    /// Tamaño máximo permitido en bytes 10 megas por defecto cruck
     /// </summary>
-    public long MaxFileSize { get; set; } = 5 * 1024 * 1024;
+    public long MaxFileSize { get; set; } = 10 * 1024 * 1024;
     
     /// <summary>
     /// Extensiones de archivo permitidas
