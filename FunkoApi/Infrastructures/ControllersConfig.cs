@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using System.Text.Json;
+using Serilog;
 
 namespace FunkoApi.Infrastructures;
 
@@ -19,6 +20,8 @@ public static class ControllersConfig
                 options.ReturnHttpNotAcceptable = true;
             }).AddJsonOptions(options =>
             {
+                options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                options.JsonSerializerOptions.WriteIndented = true;
                 options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             })
             .AddXmlSerializerFormatters()

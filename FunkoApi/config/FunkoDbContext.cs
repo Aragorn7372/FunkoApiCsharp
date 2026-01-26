@@ -86,8 +86,8 @@ public class FunkoDbContext : DbContext
             CategoryId = categoriaAnimeId,  
             Imagen = "goku.png",
             Price = 19.99,
-            CreatedAt = DateTime.Now,
-            UpdatedAt = DateTime.Now
+            CreatedAt = DateTime.UtcNow,  
+            UpdatedAt = DateTime.UtcNow 
         };
 
         var funko2 = new Funko
@@ -97,8 +97,8 @@ public class FunkoDbContext : DbContext
             CategoryId = categoriaPeliculasId, 
             Imagen = "vader.png",
             Price = 24.50,
-            CreatedAt = DateTime.Now,
-            UpdatedAt = DateTime.Now
+            CreatedAt = DateTime.UtcNow,  
+            UpdatedAt = DateTime.UtcNow 
         };
 
         var funko3 = new Funko
@@ -108,8 +108,8 @@ public class FunkoDbContext : DbContext
             CategoryId = categoriaVideojuegosId,  
             Imagen = Funko.IMAGE_DEFAULT,
             Price = 17.75,
-            CreatedAt = DateTime.Now,
-            UpdatedAt = DateTime. Now
+            CreatedAt = DateTime.UtcNow,  
+            UpdatedAt = DateTime.UtcNow 
         };
 
         modelBuilder.Entity<Funko>().HasData(funko1, funko2, funko3);

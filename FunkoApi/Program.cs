@@ -30,7 +30,7 @@ services.AddEmail(builder.Environment);
 
 services.AddStorage();
 services.AddWebSockets();
-services.AddGraphQL(builder.Environment);
+services.AddGraphQl(builder.Environment);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

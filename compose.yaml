@@ -1,16 +1,18 @@
 ﻿services:
   app:
     build:
-      context: ./FunkoApi
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: FunkoApi/Dockerfile
       target: final
     volumes:
-      - ./storage-dir/system-images:/app/system-images
+      - ./FunkoApi/wwwroot:/app/wwwroot
     restart: always
     env_file: .env
     environment: 
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DATABASE};Username=${DATABASE_USER};Password=${DATABASE_PASSWORD}
-      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Key=${JWT_KEY}
+      - Jwt__Issuer=${JWT_ISSUER}
+      - Jwt__Audience=${JWT_AUDIENCE}
     depends_on:
       - redis
     ports:
