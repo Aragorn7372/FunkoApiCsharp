@@ -1,0 +1,24 @@
+﻿meta {
+  name: Categoria - Unauthorized Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/Categoria
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Test Category",
+    "descripcion": "Should fail without token"
+  }
+}
+
+tests {
+  test("Status should be 401", function() {
+    expect(res.status).to.equal(401);
+  });
+}

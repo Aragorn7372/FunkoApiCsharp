@@ -1,0 +1,39 @@
+﻿meta {
+  name: Create Category
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/Categoria
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:json {
+  {
+    "nombre": "DC Comics",
+    "descripcion": "Personajes del universo DC"
+  }
+}
+
+script:post-response {
+  if (res.status === 201) {
+    bru.setEnvVar("categoryId", res.body.id);
+    console.log("Category ID saved:", res.body.id);
+  }
+}
+
+tests {
+  test("Status should be 201", function() {
+    expect(res.status).to.equal(201);
+  });
+  
+  test("Should return created category", function() {
+    expect(res.body.nombre).to.equal("DC Comics");
+  });
+}

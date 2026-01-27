@@ -1,0 +1,27 @@
+﻿meta {
+  name: Update Funko
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/api/Funkos/{{funkoId}}
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:multipart-form {
+  nombre: Batman Dark Knight Updated
+  price: 39.99
+  categoria: DC Comics
+}
+
+tests {
+  test("Status should be 200, 400, or 404", function() {
+    expect([200, 400, 404]).to.include(res.status);
+  });
+}

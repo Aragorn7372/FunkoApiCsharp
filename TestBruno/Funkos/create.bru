@@ -1,0 +1,40 @@
+﻿meta {
+  name: Create Funko
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/Funkos
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:multipart-form {
+  nombre: Batman Dark Knight
+  price: 29.99
+  categoria: DC Comics
+}
+
+script:post-response {
+  if (res.status === 201) {
+    bru.setEnvVar("funkoId", res.body.id);
+    console.log("Funko ID saved:", res.body.id);
+  }
+}
+
+tests {
+  test("Status should be 201 or 400", function() {
+    expect([201, 400]).to.include(res.status);
+  });
+  
+  test("Should return created funko if successful", function() {
+    if (res.status === 201) {
+      expect(res.body.nombre).to.equal("Batman Dark Knight");
+    }
+  });
+}

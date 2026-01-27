@@ -1,0 +1,21 @@
+﻿meta {
+  name: Get Funko By ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/Funkos/{{funkoId}}
+  body: none
+  auth: none
+}
+
+vars:pre-request {
+  funkoId: 1
+}
+
+tests {
+  test("Status should be 200 or 404", function() {
+    expect([200, 404]).to.include(res.status);
+  });
+}

@@ -1,0 +1,27 @@
+﻿meta {
+  name: Funkos - User Cannot Create
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/Funkos
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{userToken}}
+}
+
+body:multipart-form {
+  nombre: Test Funko
+  price: 19.99
+  categoria: Test
+}
+
+tests {
+  test("Status should be 403", function() {
+    expect(res.status).to.equal(403);
+  });
+}

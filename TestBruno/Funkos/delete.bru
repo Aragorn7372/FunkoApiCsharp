@@ -1,0 +1,21 @@
+﻿meta {
+  name: Delete Funko
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseUrl}}/api/Funkos/{{funkoId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+tests {
+  test("Status should be 200 or 404", function() {
+    expect([200, 404]).to.include(res.status);
+  });
+}

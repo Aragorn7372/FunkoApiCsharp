@@ -1,0 +1,35 @@
+﻿meta {
+  name: SignIn - User Login
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/Auth/signin
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "testuser",
+    "password": "TestPassword123!"
+  }
+}
+
+script:post-response {
+  if (res.status === 200) {
+    bru.setEnvVar("userToken", res.body.token);
+    console.log("User token saved:", res.body.token);
+  }
+}
+
+tests {
+  test("Status should be 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Should return token", function() {
+    expect(res.body.token).to.be.a('string');
+  });
+}

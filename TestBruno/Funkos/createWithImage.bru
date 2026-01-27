@@ -1,0 +1,35 @@
+﻿meta {
+  name: Create Funko With Image
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/Funkos
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+body:multipart-form {
+  nombre: Superman
+  price: 34.99
+  categoria: DC Comics
+  ~file: @file(/path/to/image.jpg)
+}
+
+script:post-response {
+  if (res.status === 201) {
+    bru.setEnvVar("funkoWithImageId", res.body.id);
+    console.log("Funko with image ID saved:", res.body.id);
+  }
+}
+
+tests {
+  test("Status should be 201 or 400", function() {
+    expect([201, 400]).to.include(res.status);
+  });
+}
