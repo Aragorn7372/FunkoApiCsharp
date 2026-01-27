@@ -8,9 +8,6 @@ namespace FunkoApi.Models;
 /// </summary>
 public class User : ITimestamped
 {
-    /// <summary>URL de avatar por defecto cuando no hay imagen.</summary>
-
-    /// <summary>Prefijo para avatares locales (/storage/images/usuarios/).</summary>
 
     /// <summary>ID único del usuario (PK en PostgreSQL).</summary>
     public long Id { get; set; }
