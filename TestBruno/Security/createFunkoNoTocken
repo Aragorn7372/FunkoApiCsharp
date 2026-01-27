@@ -5,7 +5,7 @@
 }
 
 post {
-  url: {{baseUrl}}/api/Funkos
+  url: {{baseUrl}}/api/funkos
   body: multipartForm
   auth: bearer
 }

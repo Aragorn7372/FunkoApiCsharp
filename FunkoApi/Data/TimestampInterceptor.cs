@@ -69,11 +69,10 @@ public static class TimestampExtensions
     {
         entity.Property("CreatedAt")
             .IsRequired()
-            .ValueGeneratedOnAdd()
             .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
         entity.Property("UpdatedAt")
             .IsRequired()
-            .ValueGeneratedOnUpdate();
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
 }

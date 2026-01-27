@@ -5,7 +5,7 @@
 }
 
 post {
-  url: {{baseUrl}}/api/Categoria
+  url: {{baseUrl}}/api/categoria
   body: json
   auth: none
 }

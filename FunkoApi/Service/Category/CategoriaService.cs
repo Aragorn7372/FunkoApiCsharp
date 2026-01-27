@@ -9,7 +9,7 @@ using FunkoApi.Service.Cache;
 
 namespace FunkoApi.Service.Category;
 
-public class CategoriaService(ILogger<CategoriaService> logger,CategoryRepository repository,ICacheService cache, CategoriaWebSocketHandler webSocketHandler) : ICategoriaService
+public class CategoriaService(ILogger<CategoriaService> logger,ICategoryRepository repository,ICacheService cache, CategoriaWebSocketHandler webSocketHandler) : ICategoriaService
 {
     private const string CacheKey = "Categoria_";
     public async Task<List<CategoriaResponseDto>> GetCategoriasAsync()

@@ -108,47 +108,4 @@ public record FunkoResponseDto(
     /// <example>
     /// "/uploads/funkos/batman-123456.jpg", "https://cdn.ejemplo.com/funkos/ironman.png"
     /// </example>
-    string Imagen)
-{
-    /// <summary>
-    /// Campo que almacena el identificador único del producto.
-    /// </summary>
-    /// <remarks>
-    /// <strong>Redundante:</strong> Este campo duplica el parámetro posicional del record.
-    /// Los records generan automáticamente propiedades para los parámetros posicionales,
-    /// por lo que esta declaración es innecesaria.
-    /// </remarks>
-    public long Id = Id;
-
-    /// <summary>
-    /// Campo que almacena el nombre del producto.
-    /// </summary>
-    /// <remarks>
-    /// <strong>Redundante:</strong> Este campo duplica el parámetro posicional del record.
-    /// </remarks>
-    public string Nombre = Nombre;
-
-    /// <summary>
-    /// Campo que almacena el precio del producto.
-    /// </summary>
-    /// <remarks>
-    /// <strong>Redundante:</strong> Este campo duplica el parámetro posicional del record.
-    /// </remarks>
-    public double Precio = Precio;
-
-    /// <summary>
-    /// Campo que almacena la categoría del producto.
-    /// </summary>
-    /// <remarks>
-    /// <strong>Redundante:</strong> Este campo duplica el parámetro posicional del record.
-    /// </remarks>
-    public string Categoria = Categoria;
-
-    /// <summary>
-    /// Campo que almacena la ruta de la imagen del producto.
-    /// </summary>
-    /// <remarks>
-    /// <strong>Redundante:</strong> Este campo duplica el parámetro posicional del record.
-    /// </remarks>
-    public string Imagen = Imagen;
-}
+    string Imagen);

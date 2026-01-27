@@ -1,11 +1,11 @@
-﻿meta {
+meta {
   name: Update Funko
   type: http
   seq: 5
 }
 
 put {
-  url: {{baseUrl}}/api/Funkos/{{funkoId}}
+  url: {{baseUrl}}/api/funkos/{{funkoId}}
   body: multipartForm
   auth: bearer
 }

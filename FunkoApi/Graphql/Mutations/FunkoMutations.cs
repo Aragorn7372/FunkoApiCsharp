@@ -22,7 +22,7 @@ public class FunkoMutation
     /// <param name="service">Servicio de funkos.</param>
     /// <returns>funko creado o error.</returns>
     [Authorize(policy: "AdminOnly")]
-    public async Task<Result<FunkoResponseDto,FunkoError>> Createfunko(
+    public async Task<FunkoResponseDto> Createfunko(
         CreateFunkoInput input,
         [Service] IFunkoService service)
     {
@@ -33,7 +33,10 @@ public class FunkoMutation
             Categoria = input.CategoriaId,
             Image = input.Imagen,
         };
-        return await service.SaveFunkoAsync(dto,null);
+        var result = await service.SaveFunkoAsync(dto, null);
+        return result.IsSuccess
+            ? result.Value
+            : throw new GraphQLException(result.Error.Error);
     }
 
     /// <summary>Actualiza un funko existente.</summary>
@@ -42,14 +45,14 @@ public class FunkoMutation
     /// <param name="service">Servicio de funkos.</param>
     /// <returns>funko actualizado o error.</returns>
     [Authorize(policy: "AdminOnly")]
-    public async Task<Result<FunkoResponseDto, FunkoError>> UpdateFunko(
+    public async Task<FunkoResponseDto> UpdateFunko(
         long id,
         UpdateFunkoInput input,
         [Service] IFunkoService service)
     {
         var existingResult = await service.GetFunkoAsync(id);
         if (existingResult.IsFailure)
-            return existingResult;
+            throw new GraphQLException(existingResult.Error.Error);
 
         var dto = new FunkoRequestDto
         {
@@ -58,7 +61,10 @@ public class FunkoMutation
             Categoria = input.CategoriaId ?? existingResult.Value.Categoria,
             Image = input.Imagen ?? existingResult.Value.Imagen,
         };
-        return await service.UpdateFunkoAsync(id, dto,null);
+        var updated=await service.UpdateFunkoAsync(id, dto,null);
+        return updated.IsSuccess
+            ? updated.Value
+            : throw new GraphQLException(updated.Error.Error);
     }
 
     /// <summary>Elimina un funko (soft delete).</summary>
@@ -66,7 +72,15 @@ public class FunkoMutation
     /// <param name="service">Servicio de funkos.</param>
     /// <returns>Éxito o error.</returns>
     [Authorize(policy: "AdminOnly")]
-    public async Task<Result<FunkoResponseDto,FunkoError>> DeleteFunko(
+    public async Task<FunkoResponseDto> DeleteFunko(
         long id,
-        [Service] IFunkoService service) => await service.DeleteFunkoAsync(id);
+        [Service] IFunkoService service)
+    {
+        var result= await service.DeleteFunkoAsync(id);
+        return result.IsSuccess
+            ? result.Value
+            : throw new GraphQLException(result.Error.Error);
+    }
+
+    
 }

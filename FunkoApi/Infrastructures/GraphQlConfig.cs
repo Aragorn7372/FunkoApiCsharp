@@ -22,12 +22,15 @@ public static class GraphQlConfig
         services.AddGraphQlPubSub();
         return services
             .AddGraphQLServer()
+            .AddAuthorization() 
+            .AddProjections()
             .AddQueryType<FunkoQuery>()
             .AddMutationType<FunkoMutation>()
             .AddSubscriptionType<FunkoSubscription>()
             .AddInMemorySubscriptions()
             .AddType<FunkoType>()
             .AddType<CategoryType>()
+            .AddMutationConventions() 
             .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = environment.IsDevelopment());
     }
 }

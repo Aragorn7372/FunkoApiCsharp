@@ -113,6 +113,33 @@ public class FunkoDbContext : DbContext
         };
 
         modelBuilder.Entity<Funko>().HasData(funko1, funko2, funko3);
+        // Seed users
+        var adminUser = new User
+        {
+            Id = 1,
+            Username = "admin",
+            Email = "admin@funkoapi.com",
+            PasswordHash = "$2a$12$n1uTaycq1Cq5uwwHCMSqa.dUDZZ3rU4B6.vZPDov4QJiCBgGvCcMy",
+            Role = User.UserRoles.ADMIN,
+            IsDeleted = false,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        var normalUser = new User
+        {
+            Id = 2,
+            Username = "user",
+            Email = "user@funkoapi.com",
+            PasswordHash = "$2a$12$Vp5ZpZik9vTjMMLRblbDKu93ct9qZEK/3zMKdOrE7JBdFBBJEogGy",
+            Role = User.UserRoles.USER,
+            IsDeleted = false,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        modelBuilder.Entity<User>().HasData(adminUser, normalUser);
+
     }
     
 }

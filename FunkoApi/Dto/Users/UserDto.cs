@@ -153,26 +153,3 @@ public record AuthResponseDto(
     UserDto User
 );
 
-/// <summary>
-/// DTO para actualizar datos de usuario.
-/// Campos opcionales: solo los presentes se actualizan.
-public record UserUpdateDto
-{
-    /// <summary>
-    /// Nuevo correo electrónico del usuario (opcional).
-    /// Debe ser un email válido y único.
-    /// </summary>
-    /// <example>nuevo@example.com</example>
-    [EmailAddress(ErrorMessage = "Debe ser un correo electrónico válido")]
-    [MaxLength(100, ErrorMessage = "El correo no puede exceder 100 caracteres")]
-    public string? Email { get; init; }
-
-    /// <summary>
-    /// Nueva contraseña del usuario (opcional).
-    /// Mínimo 6 caracteres.
-    /// </summary>
-    /// <example>NuevaContraseña456!</example>
-    [MinLength(6, ErrorMessage = "La contraseña debe tener al menos 6 caracteres")]
-    [MaxLength(100, ErrorMessage = "La contraseña no puede exceder 100 caracteres")]
-    public string? Password { get; init; }
-}

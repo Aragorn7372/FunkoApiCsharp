@@ -22,7 +22,7 @@ else
   fi
 fi
 
-echo "🚀 Ejecutando docker compose up -d..."
+echo " Ejecutando docker compose up -d..."
 docker compose up -d
 
-echo "✅ Listo."
+echo " Listo."

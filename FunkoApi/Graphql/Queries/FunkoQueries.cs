@@ -12,7 +12,6 @@ public class FunkoQuery
     /// <summary>Obtiene todos los funkos (proyección habilitada).</summary>
     /// <param name="funkoRepository">Repositorio de funkos.</param>
     /// <returns>IQueryable de funkos.</returns>
-    [UseFirstOrDefault]
     [UseProjection]
     public IQueryable<Funko> GetFunkos([Service] IFunkoRepository funkoRepository) =>
         funkoRepository.FindAllAsNoTracking();
@@ -35,7 +34,6 @@ public class FunkoQuery
     /// <summary>Obtiene todas las categorías.</summary>
     /// <param name="categoriaRepository">Repositorio de categorías.</param>
     /// <returns>IQueryable de categorías.</returns>
-    [UseFirstOrDefault]
     [UseProjection]
     public IQueryable<Categoria> GetCategorias([Service] ICategoryRepository categoriaRepository) =>
         categoriaRepository.FindAllAsNoTracking();

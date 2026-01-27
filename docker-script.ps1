@@ -1,31 +1,31 @@
 ﻿param (
-    [string]$ContainerName
+    [string]$Name
 )
 
 $ImageName = $null
 
-# Si se pasó nombre, intentar obtener la imagen
-if ($ContainerName) {
-    try {
-        $ImageName = docker inspect $ContainerName --format='{{.Config.Image}}' 2>$null
-    } catch {
-        $ImageName = $null
+#  Intentar como CONTENEDOR
+if ($Name) {
+    $ImageName = docker inspect $Name --format='{{.Config.Image}}' 2>$null
+}
+
+#  Si no era contenedor, intentar como IMAGEN
+if (-not $ImageName -and $Name) {
+    $exists = docker images -q $Name 2>$null
+    if ($exists) {
+        $ImageName = $Name
     }
 }
 
 Write-Host "Ejecutando docker compose down -v..."
 docker compose down -v
 
-# Eliminar imagen solo si existe
+# Eliminar imagen solo si se resolvió
 if ($ImageName) {
     Write-Host "Eliminando imagen $ImageName..."
     docker rmi -f $ImageName
 } else {
-    if ($ContainerName) {
-        Write-Host "Contenedor '$ContainerName' no encontrado. Saltando eliminación de imagen."
-    } else {
-        Write-Host "No se pasó nombre de contenedor. Saltando eliminación de imagen."
-    }
+    Write-Host "No se encontró contenedor ni imagen válida. Saltando eliminación de imagen."
 }
 
 Write-Host "Ejecutando docker compose up -d..."
