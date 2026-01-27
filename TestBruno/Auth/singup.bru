@@ -12,14 +12,14 @@ post {
 
 body:json {
   {
-    "username": "{{adminUsername}}",
-    "password": "{{adminPassword}}"
+    "username": "user",
+    "password": "user"
   }
 }
 
 script:post-response {
   if (res.status === 200) {
-    bru.setEnvVar("adminToken", res.body.token);
+    bru.setEnvVar("userToken", res.body.token);
     console.log("Admin token saved:", res.body.token);
   }
 }
