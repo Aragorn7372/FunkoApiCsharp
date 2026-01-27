@@ -20,7 +20,7 @@ public static class CacheConfig
             Log.Information("💾 Configurando caché Redis (producción)...");
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = "redis:6379 ";
+                options.Configuration = "redis:6379,password=redispass123";
                 options.InstanceName = "FunkoApi:";
             });
             services.TryAddScoped<ICacheService, CacheService>();

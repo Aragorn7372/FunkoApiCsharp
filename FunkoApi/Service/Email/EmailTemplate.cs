@@ -48,7 +48,7 @@ public static class EmailTemplates
     /// <summary>
     /// Genera el contenido para email de nuevo producto.
     /// </summary>
-    public static string FunkoCreado(string nombre, double precio, int stock, long id)
+    public static string FunkoCreado(string nombre, double precio, string category, long id)
     {
         return $@"
             <table style='width: 100%; border-collapse: collapse; margin: 20px 0;'>
@@ -66,7 +66,7 @@ public static class EmailTemplates
                 </tr>
                 <tr>
                     <td style='padding: 12px; background-color: #f8f9fa; font-weight: 600;'>Stock:</td>
-                    <td style='padding: 12px;'>{stock} unidades</td>
+                    <td style='padding: 12px;'>{category} unidades</td>
                 </tr>
             </table>
             <p style='margin-top: 20px; padding: 15px; background-color: #e7f3ff; border-left: 4px solid #667eea; border-radius: 4px;'>

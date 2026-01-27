@@ -19,7 +19,7 @@ public static class ServicesConfig
     {
         Log.Information("⚙️ Registrando servicios...");
         return services
-            .AddScoped<IFunkoService, FunkoFunkoService>()
+            .AddScoped<IFunkoService, FunkoService>()
             .AddScoped<ICategoriaService, CategoriaService>()
             .AddScoped<IJwtService, JwtService>()
             .AddScoped<IJwtTokenExtractor, JwtTokenExtractor>()

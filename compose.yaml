@@ -15,6 +15,13 @@
       - Jwt__Audience=${JWT_AUDIENCE}
     depends_on:
       - redis
+      - postgres
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/health" ]
+      interval: 5s      # Revisar rápido al principio
+      timeout: 5s
+      retries: 10       # Dar 10 intentos
+      start_period: 10s
     ports:
       - "8080:8080"
     networks:
@@ -47,12 +54,43 @@
       - postgres-data:/var/lib/postgresql/data
     networks:
       - webnet
+    # 1. El ejecutor de tests
+  bruno-tester:
+    image: node:alpine
+    volumes:
+      - ./TestBruno:/tests
+      - reports-data:/reports # Volumen compartido
+    depends_on:
+      - app
+    entrypoint: >
+      sh -c "
+        echo 'Instalando Bruno CLI...' &&
+        npm install -g @usebruno/cli --silent &&
+        echo 'Esperando margen de seguridad...' &&
+        sleep 10 &&
+        echo 'Iniciando tests en /tests...' &&
+        ls &&
+        cd tests &&
+        bru run --env local  --reporter-html /reports/index.html"
+    networks:
+      - webnet
 
+    # 2. El servidor que muestra el reporte
+  reports-web:
+    image: nginx:alpine
+    ports:
+      - "8060:80" 
+    volumes:
+      - reports-data:/usr/share/nginx/html:ro
+    depends_on:
+      - bruno-tester
+    networks:
+      - webnet
+    
 networks:
   webnet:
     driver: bridge
 volumes:
-  storage-dir:
-  mongo-data:
   redis-data:
   postgres-data:
+  reports-data:

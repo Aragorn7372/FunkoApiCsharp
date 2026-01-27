@@ -9,17 +9,21 @@ using FunkoApi.Models;
 using FunkoApi.Repository.Category;
 using FunkoApi.Repository.funkos;
 using FunkoApi.Service.Cache;
+using FunkoApi.Service.Email;
 using FunkoApi.Service.storage;
+using TiendaApi.Api.Services.Email;
 
 namespace FunkoApi.Service.Funkos;
 
-public class FunkoFunkoService(ICacheService cache, 
+public class FunkoService(ICacheService cache, 
     IFunkoRepository repository,
     ICategoryRepository categoryRepository,
     IStorageService storage,
     FunkosWebSocketHandler webSocket,
-    ILogger<FunkoFunkoService> logger,
-    IEventPublisher eventPublisher
+    IEmailService mail,
+    ILogger<FunkoService> logger,
+    IEventPublisher eventPublisher,
+    IConfiguration config
     )
     : IFunkoService
 {
@@ -70,6 +74,7 @@ public class FunkoFunkoService(ICacheService cache,
                         logger.LogInformation("funko guardado en la base de datos con id:" + model.Id);
                         NotificarWebSocketFunko(model.ToDto(), FunkoNotificationType.Created);
                         EventoSuscripcionFunkoCreado(model.ToDto());
+                        EnviarEmail(model);
                     })
                     : Result.Failure<FunkoResponseDto, FunkoError>(
                         new FunkoError("no se pudo guardar el funko")
@@ -231,6 +236,34 @@ public class FunkoFunkoService(ICacheService cache,
             catch (Exception ex)
             {
                 logger.LogWarning(ex, "Error publicando evento GraphQL Subscription al eliminar Funko: {FunkoId}", funkoId);
+            }
+        });
+    }
+    private void EnviarEmail(Funko funko)
+    {
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                var adminEmail = config["Smtp:AdminEmail"];
+                if (string.IsNullOrEmpty(adminEmail)) return;
+
+                var content = EmailTemplates.FunkoCreado(funko.Name, funko.Price, funko.Category!.Nombre, funko.Id);
+                var body = EmailTemplates.CreateBase("Nuevo Producto Creado", content);
+
+                var emailMessage = new EmailMessage
+                {
+                    To = adminEmail,
+                    Subject = "🆕 Nuevo Producto en Tienda DAW",
+                    Body = body,
+                    IsHtml = true
+                };
+                await mail.EnqueueEmailAsync(emailMessage);
+                logger.LogDebug("Email de notificación encolado tras crear producto");
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Error al encolar email de notificación tras crear producto");
             }
         });
     }

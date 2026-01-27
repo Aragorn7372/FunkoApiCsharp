@@ -43,7 +43,7 @@ public class FunkoRepository(FunkoDbContext context,ILogger<FunkoRepository> log
             found.Name = newFunko.Name;
             found.Category = newFunko.Category;
             found.Price= newFunko.Price;
-            found.UpdatedAt= DateTime.Now;
+            found.UpdatedAt= DateTime.UtcNow;
             if (newFunko.Imagen != Funko.IMAGE_DEFAULT)
             {
                 found.Imagen = newFunko.Imagen;
