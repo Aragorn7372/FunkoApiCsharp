@@ -96,21 +96,16 @@ public class AuthService(
     /// </summary>
     private async Task<UnitResult<AuthError>> CheckDuplicatesAsync(RegisterDto dto)
     {
-        var usernameCheckTask = userRepository.FindByUsernameAsync(dto.Username!);
-        var emailCheckTask = userRepository.FindByEmailAsync(dto.Email!);
-
-        await Task.WhenAll(usernameCheckTask, emailCheckTask);
-
-        var existingUser = await usernameCheckTask;
+        var existingUser = await userRepository.FindByUsernameAsync(dto.Username!);
         if (existingUser is not null)
         {
-            return UnitResult.Failure<AuthError>(new ConflictError("username ya en uso:"+existingUser.Username));
+            return UnitResult.Failure<AuthError>(new ConflictError("username ya en uso:" + existingUser.Username));
         }
 
-        var existingEmail = await emailCheckTask;
+        var existingEmail = await userRepository.FindByEmailAsync(dto.Email!);
         if (existingEmail is not null)
         {
-            return UnitResult.Failure<AuthError>(new ConflictError("email ya en uso"+existingEmail.Email));
+            return UnitResult.Failure<AuthError>(new ConflictError("email ya en uso" + existingEmail.Email));
         }
 
         return UnitResult.Success<AuthError>();

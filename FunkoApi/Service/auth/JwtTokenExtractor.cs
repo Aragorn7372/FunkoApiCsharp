@@ -27,8 +27,8 @@ public class JwtTokenExtractor : IJwtTokenExtractor
 
             var userIdClaim = jwtToken.Claims.FirstOrDefault(c => 
                 c.Type == ClaimTypes.NameIdentifier || 
-                c.Type == JwtRegisteredClaimNames.Sub ||
-                c.Type == "nameid");
+                c.Type == "nameid" ||
+                c.Type == JwtRegisteredClaimNames.Sub);
 
             if (userIdClaim != null && long.TryParse(userIdClaim.Value, out var userId))
             {
