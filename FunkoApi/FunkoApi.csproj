@@ -90,6 +90,10 @@
     <ItemGroup>
       <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+      <PackageReference Include="coverlet.msbuild" Version="6.0.4">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
       <PackageReference Include="CSharpFunctionalExtensions" Version="3.6.0" />
       <PackageReference Include="GreenDonut" Version="15.1.12" />
       <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.12" />

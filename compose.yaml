@@ -85,7 +85,14 @@
       - bruno-tester
     networks:
       - webnet
-    
+  report-test:
+    image: nginx:alpine
+    ports:
+      - "8061:80"
+    volumes:
+      - ./TestFunko/html:/usr/share/nginx/html:ro
+    networks:
+      - webnet
 networks:
   webnet:
     driver: bridge
