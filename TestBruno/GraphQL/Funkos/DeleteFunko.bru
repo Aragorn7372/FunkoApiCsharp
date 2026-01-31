@@ -10,6 +10,18 @@ post {
   auth: inherit
 }
 
+docs {
+  # GraphQL - Delete Funko
+  
+  Mutation para eliminar un Funko.
+  
+  ## Argumentos
+  - `id`: ID del funko a eliminar.
+  
+  ## Autenticación
+  - Requiere rol **ADMIN**.
+}
+
 body:graphql {
   mutation DeleteFunko($id: Long!) {
     deleteFunko(input: { id: $id }) {

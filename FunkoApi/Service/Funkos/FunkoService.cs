@@ -15,6 +15,10 @@ using TiendaApi.Api.Services.Email;
 
 namespace FunkoApi.Service.Funkos;
 
+/// <summary>
+/// Implementación del servicio de Funkos.
+/// Coordina repositorio, cache, almacenamiento, websockets y eventos.
+/// </summary>
 public class FunkoService(ICacheService cache, 
     IFunkoRepository repository,
     ICategoryRepository categoryRepository,
@@ -30,12 +34,14 @@ public class FunkoService(ICacheService cache,
     private const string CacheKey = "Funko_";
   
 
+    /// <inheritdoc />
     public async Task<List<FunkoResponseDto>> GetFunkosAsync()
     {
         logger.LogInformation("obtener funkos");
         return await Task.FromResult(repository.GetAllAsync().Result.Select(it => it.ToDto()).ToList());
     }
 
+    /// <inheritdoc />
     public async Task<Result<FunkoResponseDto, FunkoError>> GetFunkoAsync(long id)
     {
           logger.LogInformation("obtener funko con id: " + id);
@@ -55,6 +61,7 @@ public class FunkoService(ICacheService cache,
     }
 
 
+    /// <inheritdoc />
     public async Task<Result<FunkoResponseDto, FunkoError>> SaveFunkoAsync(FunkoRequestDto request,IFormFile? file)
     {
         
@@ -83,6 +90,7 @@ public class FunkoService(ICacheService cache,
             : Result.Failure<FunkoResponseDto, FunkoError>(validationResult.Error);
     }
 
+    /// <inheritdoc />
     public async Task<Result<FunkoResponseDto, FunkoError>> DeleteFunkoAsync(long id)
     {
         
@@ -98,6 +106,7 @@ public class FunkoService(ICacheService cache,
                 .TapError(_=> logger.LogWarning("funko no ha sido encontro funko con id: " + id));
     }
 
+    /// <inheritdoc />
     public async Task<Result<FunkoResponseDto, FunkoError>> UpdateFunkoAsync(long id, FunkoRequestDto request,IFormFile? file)
     {   
         var validationResult = await Valida(request);

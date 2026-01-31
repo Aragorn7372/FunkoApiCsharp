@@ -98,7 +98,29 @@ dotnet test
 ### Tests de Bruno (API)
 El proyecto incluye una configuración automática para ejecutar tests de Bruno en Docker. Los reportes se generan en el puerto `8060`.
 
+
+
+## 👨‍💻 Autor
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <a href="https://github.com/Aragorn7372">
+          <img src="https://github.com/Aragorn7372.png" width="100px;" alt="" style="border-radius: 50%"/>
+        </a><br>
+        <sub><b>Aragorn7372</b></sub><br>
+        <a href="https://github.com/Aragorn7372" title="GitHub">
+          <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
 ---
+
 
 ## 📝 Licencia
 

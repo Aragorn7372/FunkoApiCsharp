@@ -10,6 +10,16 @@ get {
   auth: none
 }
 
+docs {
+  # Get All Categories
+  
+  Obtiene una lista de todas las categorías disponibles.
+  
+  ## Respuesta
+  - Retorna un array JSON con las categorías.
+  - No requiere autenticación (público).
+}
+
 tests {
   test("Status should be 200", function() {
     expect(res.status).to.equal(200);

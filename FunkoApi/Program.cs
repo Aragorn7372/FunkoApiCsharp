@@ -5,6 +5,11 @@ using FunkoApi.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
+/// <summary>
+/// Punto de entrada de la aplicación API REST y GraphQL.
+/// Configura servicios, pipeline de middlewares y arranque.
+/// </summary>
+
 Log.Logger= SerilogConfig.Configure().CreateLogger();
 Console.OutputEncoding = Encoding.UTF8; 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,6 +59,7 @@ app.MapGraphQL();
 
 try
 {
+    Log.Information("🚀 Iniciando aplicación FunkoApi...");
     app.Run();
 }
 catch (Exception ex)

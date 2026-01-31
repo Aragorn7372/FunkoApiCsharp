@@ -10,6 +10,16 @@ post {
   auth: bearer
 }
 
+docs {
+  # Create Category
+  
+  Crea una nueva categoría de productos.
+  
+  ## Requisitos
+  - Requiere token de autenticación con rol **ADMIN**.
+  - El ID de la nueva categoría se guarda en la variable `categoryId` para usar en otros tests.
+}
+
 auth:bearer {
   token: {{adminToken}}
 }

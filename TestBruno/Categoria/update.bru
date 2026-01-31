@@ -10,6 +10,16 @@ put {
   auth: bearer
 }
 
+docs {
+  # Update Category
+  
+  Actualiza los datos de una categoría existente.
+  
+  ## Requisitos
+  - Requiere token de autenticación con rol **ADMIN**.
+  - Utiliza `categoryId` de la variable de entorno.
+}
+
 auth:bearer {
   token: {{adminToken}}
 }

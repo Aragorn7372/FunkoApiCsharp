@@ -3,15 +3,17 @@ using FunkoApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FunkoApi.config;
+
 /// <summary>
-/// clase de configuracion de la base de datos donde se indican las tablas y columnas
+/// Contexto de base de datos para la aplicación FunkoApi.
+/// Define las tablas, relaciones y datos iniciales (seeding).
 /// </summary>
 public class FunkoDbContext : DbContext
 {
     /// <summary>
-    /// genera tablas y columnas
+    /// Configura el modelo de datos, indices y datos iniciales.
     /// </summary>
-    /// <param name="modelBuilder">generador de net para tablas y columnas</param>
+    /// <param name="modelBuilder">Constructor de modelos de EF Core.</param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -38,18 +40,18 @@ public class FunkoDbContext : DbContext
     public DbSet<User> Users { get; set; } = null!;
     
   /// <summary>
-  /// contructor con parametros
+  /// Inicializa una nueva instancia del contexto de base de datos.
   /// </summary>
-  /// <param name="options">opcionas para configurar la clase</param>
+  /// <param name="options">Opciones de configuración del contexto.</param>
     public FunkoDbContext(DbContextOptions<FunkoDbContext> options)
         : base(options)
     { }
    
         
-/// <summary>
-/// inicializador de datos de ejemplo de la base de datos
-/// </summary>
-/// <param name="modelBuilder">controlador de la base de datos</param>
+    /// <summary>
+    /// Método privado para sembrar datos de prueba en la base de datos.
+    /// </summary>
+    /// <param name="modelBuilder">Constructor de modelos.</param>
     private void SeedData(ModelBuilder modelBuilder)
     {
         // Define category IDs

@@ -10,6 +10,18 @@ post {
   auth: inherit
 }
 
+docs {
+  # GraphQL - Create Funko
+  
+  Mutation para crear un nuevo Funko.
+  
+  ## Argumentos
+  - `input`: Objeto `CreateFunkoInput`.
+  
+  ## Autenticación
+  - Requiere rol **ADMIN**.
+}
+
 body:graphql {
   mutation CreateFunko($input: CreateFunkoInput!) {
     createfunko(input: $input) {

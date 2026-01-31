@@ -10,6 +10,17 @@ post {
   auth: bearer
 }
 
+docs {
+  # Create Funko With Image
+  
+  Crea un nuevo producto Funko subiendo una imagen asociada.
+  
+  ## Requisitos
+  - Requiere token **ADMIN**.
+  - Utiliza `multipart/form-data`.
+  - El ID generado se guarda en la variable `funkoWithImageId`.
+}
+
 auth:bearer {
   token: {{adminToken}}
 }

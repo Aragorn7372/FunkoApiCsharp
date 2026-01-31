@@ -24,6 +24,17 @@ script:post-response {
   }
 }
 
+docs {
+  # Sign Up
+  
+  Registra un nuevo usuario en el sistema.
+  
+  ## Datos requeridos
+  - `username`: Nombre de usuario único.
+  - `password`: Contraseña segura.
+  - `email`: Correo electrónico válido.
+}
+
 tests {
   test("Status should be 200", function() {
     expect(res.status).to.equal(200);

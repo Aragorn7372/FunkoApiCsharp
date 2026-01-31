@@ -10,6 +10,16 @@ put {
   auth: bearer
 }
 
+docs {
+  # Update Funko
+  
+  Actualiza los datos de un Funko existente.
+  
+  ## Requisitos
+  - Requiere token **ADMIN**.
+  - Utiliza `funkoId` de la variable de entorno.
+}
+
 auth:bearer {
   token: {{adminToken}}
 }

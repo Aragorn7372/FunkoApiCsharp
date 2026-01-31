@@ -10,6 +10,17 @@ delete {
   auth: bearer
 }
 
+docs {
+  # Delete Funko
+  
+  Elimina un producto Funko del sistema.
+  
+  ## Requisitos
+  - Requiere token **ADMIN**.
+  - Utiliza `funkoId`.
+  - Si tiene imagen asociada, también se elimina del almacenamiento.
+}
+
 auth:bearer {
   token: {{adminToken}}
 }

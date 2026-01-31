@@ -10,6 +10,18 @@ post {
   auth: none
 }
 
+docs {
+  # GraphQL - Get Funko By ID
+  
+  Consulta un Funko específico por su ID.
+  
+  ## Variables
+  - `id`: Long (ID del funko).
+  
+  ## Autenticación
+  - Pública.
+}
+
 body:graphql {
   query GetFunko($id: Long!) {
     funko(id: $id) {

@@ -5,10 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FunkoApi.Repository.funkos;
 
+/// <summary>
+/// Implementación del repositorio de Funkos utilizando Entity Framework Core.
+/// </summary>
 public class FunkoRepository(FunkoDbContext context,ILogger<FunkoRepository> log) : IFunkoRepository
 {
    
     
+    /// <inheritdoc />
     public async Task<List<Funko>> GetAllAsync()
     {
         log.LogInformation("Getting all Funkos");
@@ -17,6 +21,7 @@ public class FunkoRepository(FunkoDbContext context,ILogger<FunkoRepository> log
             .ToListAsync();
     }
 
+    /// <inheritdoc />
     public async Task<Funko?> GetByIdAsync(long id)
     {
         log.LogInformation("Getting Funko with id: " + id);
@@ -24,6 +29,8 @@ public class FunkoRepository(FunkoDbContext context,ILogger<FunkoRepository> log
             .Include(f => f.Category)
             .FirstOrDefaultAsync(f => f.Id == id);
     }
+    
+    /// <inheritdoc />
     public IQueryable<Funko> FindAllAsNoTracking()
     {
         log.LogDebug("Obteniendo productos como IQueryable");
@@ -33,6 +40,7 @@ public class FunkoRepository(FunkoDbContext context,ILogger<FunkoRepository> log
             .AsNoTracking();
     }
 
+    /// <inheritdoc />
     public async Task<Funko?> UpdateAsync(long id, Funko newFunko)
     {
         log.LogInformation("Updating Funko with id: " + id);
@@ -56,6 +64,7 @@ public class FunkoRepository(FunkoDbContext context,ILogger<FunkoRepository> log
         return null;
     }
 
+    /// <inheritdoc />
     public async Task<Funko> AddAsync(Funko newFunko)
     { 
         log.LogInformation("Adding Funko");
@@ -65,6 +74,7 @@ public class FunkoRepository(FunkoDbContext context,ILogger<FunkoRepository> log
         return saved.Entity;
     }
 
+    /// <inheritdoc />
     public async Task<Funko?> DeleteAsync(long id)
     {
         log.LogInformation("Deleting Funko with id: " + id);

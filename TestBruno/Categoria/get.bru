@@ -10,6 +10,18 @@ get {
   auth: bearer
 }
 
+docs {
+  # Get Category By ID
+  
+  Obtiene los detalles de una categoría específica por su ID.
+  
+  ## Parámetros
+  - `id`: ID de la categoría (utiliza la variable `categoryId`).
+  
+  ## Autenticación
+  - Requiere autenticación (token de usuario o admin).
+}
+
 auth:bearer {
   token: {{userToken}}
 }

@@ -10,6 +10,17 @@ delete {
   auth: bearer
 }
 
+docs {
+  # Delete Category
+  
+  Elimina una categoría del sistema.
+  
+  ## Requisitos
+  - Requiere token de autenticación con rol **ADMIN**.
+  - Utiliza `categoryId` de la variable de entorno.
+  - La operación es irreversible.
+}
+
 auth:bearer {
   token: {{adminToken}}
 }

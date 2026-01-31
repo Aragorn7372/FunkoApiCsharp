@@ -10,6 +10,15 @@ post {
   auth: bearer
 }
 
+docs {
+  # Funkos - User Cannot Create
+  
+  Verifica que un usuario estándar (rol USER) no pueda crear un Funko.
+  
+  ## Respuesta Esperada
+  - **403 Forbidden**: El usuario no tiene permisos suffisientes.
+}
+
 auth:bearer {
   token: {{userToken}}
 }

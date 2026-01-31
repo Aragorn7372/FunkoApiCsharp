@@ -4,14 +4,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FunkoApi.Repository.Category;
 
+/// <summary>
+/// Implementación del repositorio de categorías utilizando Entity Framework Core.
+/// </summary>
 public class CategoryRepository(FunkoDbContext context,ILogger<CategoryRepository> log) : ICategoryRepository
 {
 
+    /// <inheritdoc />
     public async Task<List<Categoria>> GetAllAsync()
     {
         log.LogInformation("Getting all categorias");
         return await context.Categorias.ToListAsync();
     }
+    
+    /// <inheritdoc />
     public IQueryable<Categoria> FindAllAsNoTracking()
     {
         log.LogDebug("Obteniendo categorías como IQueryable");
@@ -19,12 +25,15 @@ public class CategoryRepository(FunkoDbContext context,ILogger<CategoryRepositor
             .OrderBy(c => c.Nombre)
             .AsNoTracking();
     }
+    
+    /// <inheritdoc />
     public async Task<Categoria?> GetByIdAsync(string id)
     {
         log.LogInformation("gettin categorie with id {id}", id);
         return await context.Categorias.Where(c=> c.Nombre == id).FirstOrDefaultAsync();
     }
 
+    /// <inheritdoc />
     public async Task<Categoria?> UpdateAsync(Guid id, Categoria categoria)
     {
         log.LogInformation("Updating Categoria with id: " + id);
@@ -39,6 +48,7 @@ public class CategoryRepository(FunkoDbContext context,ILogger<CategoryRepositor
         return null;
     }
 
+    /// <inheritdoc />
     public async Task<Categoria> AddAsync(Categoria categoria)
     {
         log.LogInformation("Adding Funko");
@@ -47,6 +57,7 @@ public class CategoryRepository(FunkoDbContext context,ILogger<CategoryRepositor
         return saved.Entity;
     }
 
+    /// <inheritdoc />
     public async Task<Categoria?> DeleteAsync(Guid id)
     {
         log.LogInformation("Deleting Categoria with id: " + id);

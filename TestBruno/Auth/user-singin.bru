@@ -10,6 +10,16 @@ post {
   auth: none
 }
 
+docs {
+  # User Sign In
+  
+  Inicia sesión con credenciales de usuario estándar para obtener un token JWT con rol USER.
+  
+  ## Credenciales
+  - Utiliza credenciales hardcoded por defecto ("user"/"user").
+  - El token resultante se guarda automáticamente en la variable `userToken`.
+}
+
 body:json {
   {
     "username": "user",

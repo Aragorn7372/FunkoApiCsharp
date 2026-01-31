@@ -10,6 +10,16 @@ post {
   auth: none
 }
 
+docs {
+  # Admin Sign In
+  
+  Inicia sesión con credenciales de administrador para obtener un token JWT con rol ADMIN.
+  
+  ## Credenciales
+  - Utiliza las variables de entorno `adminUsername` y `adminPassword`.
+  - El token resultante se guarda automáticamente en la variable `adminToken`.
+}
+
 body:json {
   {
     "username": "{{adminUsername}}",

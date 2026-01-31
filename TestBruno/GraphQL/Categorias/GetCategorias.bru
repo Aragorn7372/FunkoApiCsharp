@@ -10,6 +10,19 @@ post {
   auth: none
 }
 
+docs {
+  # GraphQL - Get Categories
+  
+  Consulta para obtener todas las categorías.
+  
+  ## CAMPOS
+  - `id`
+  - `nombre`
+  
+  ## Autenticación
+  - Pública (no requiere token).
+}
+
 body:graphql {
   query {
     categorias {

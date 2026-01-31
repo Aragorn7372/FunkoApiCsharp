@@ -10,6 +10,16 @@ put {
   auth: bearer
 }
 
+docs {
+  # Update Funko With Image
+  
+  Actualiza los datos y la imagen de un Funko existente.
+  
+  ## Requisitos
+  - Requiere token **ADMIN**.
+  - Reemplaza la imagen anterior si existe.
+}
+
 auth:bearer {
   token: {{adminToken}}
 }

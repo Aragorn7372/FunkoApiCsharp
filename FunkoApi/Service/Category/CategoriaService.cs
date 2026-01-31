@@ -9,15 +9,22 @@ using FunkoApi.Service.Cache;
 
 namespace FunkoApi.Service.Category;
 
+/// <summary>
+/// Implementación del servicio de categorías.
+/// Maneja la lógica de negocio, cacheo y notificaciones WebSocket.
+/// </summary>
 public class CategoriaService(ILogger<CategoriaService> logger,ICategoryRepository repository,ICacheService cache, CategoriaWebSocketHandler webSocketHandler) : ICategoriaService
 {
     private const string CacheKey = "Categoria_";
+
+    /// <inheritdoc />
     public async Task<List<CategoriaResponseDto>> GetCategoriasAsync()
     {
         logger.LogInformation("Getting categorias");
         return await Task.FromResult(repository.GetAllAsync().Result.Select(it => it.ToDto()).ToList());
     }
 
+    /// <inheritdoc />
     public async Task<Result<CategoriaResponseDto, CategoriaError>> GetCategoriaAsync(string id)
     {
         return await cache.GetAsync<Categoria>(CacheKey+id) is { } cached
@@ -34,6 +41,7 @@ public class CategoriaService(ILogger<CategoriaService> logger,ICategoryReposito
                 .TapError(_ => logger.LogWarning("categoria not found with name: {id}", id));
     }
 
+    /// <inheritdoc />
     public async Task<Result<CategoriaResponseDto, CategoriaError>> SaveCategoriaAsync(CategoriaRequestDto request)
     {
         return await repository.AddAsync(request.ToModel()) is { } categoria
@@ -48,6 +56,7 @@ public class CategoriaService(ILogger<CategoriaService> logger,ICategoryReposito
                 .TapError(_ => logger.LogWarning("No se pudo guardar la categoria"));
     }
 
+    /// <inheritdoc />
     public async Task<Result<CategoriaResponseDto, CategoriaError>> DeleteCategoriaAsync(Guid id)
     {
         return await repository.DeleteAsync(id) is { } categoria
@@ -63,6 +72,7 @@ public class CategoriaService(ILogger<CategoriaService> logger,ICategoryReposito
                 .TapError(_ => logger.LogWarning("categoria no encontrada con id: {id}", id));
     }
 
+    /// <inheritdoc />
     public async Task<Result<CategoriaResponseDto, CategoriaError>> UpdateCategoriaAsync(Guid id, CategoriaRequestDto request)
     {
         return await repository.UpdateAsync(id, request.ToModel()) is { } categoria
@@ -78,6 +88,7 @@ public class CategoriaService(ILogger<CategoriaService> logger,ICategoryReposito
                     new CategoriaNotFoundError(($"categoria no encontrada con id: {id}", id).ToString()))
                 .TapError(_ => logger.LogWarning("categoria con id: {id}", id));
     }
+
     private void NotificarWebSocketCategoria(CategoriaResponseDto categoria, string type)
     {
         if (type == null) throw new ArgumentNullException(nameof(type));

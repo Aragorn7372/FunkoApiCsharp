@@ -10,6 +10,18 @@ post {
   auth: none
 }
 
+docs {
+  # GraphQL - Get Funkos
+  
+  Consulta para obtener la lista de todos los Funkos.
+  
+  ## Projection
+  - Incluye relación con `category`.
+  
+  ## Autenticación
+  - Pública.
+}
+
 body:graphql {
   query {
     funkos {

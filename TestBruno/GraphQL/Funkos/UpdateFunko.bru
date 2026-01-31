@@ -10,6 +10,19 @@ post {
   auth: inherit
 }
 
+docs {
+  # GraphQL - Update Funko
+  
+  Mutation para actualizar un Funko existente.
+  
+  ## Argumentos
+  - `id`: ID del funko a modificar.
+  - `input`: Campos a actualizar.
+  
+  ## Autenticación
+  - Requiere rol **ADMIN**.
+}
+
 body:graphql {
   mutation UpdateFunko($id: Long!, $input: UpdateFunkoInput!) {
     updateFunko(id: $id, input: $input) {

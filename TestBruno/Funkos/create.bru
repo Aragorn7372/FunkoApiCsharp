@@ -10,6 +10,16 @@ post {
   auth: bearer
 }
 
+docs {
+  # Create Funko
+  
+  Crea un nuevo producto Funko (sin imagen).
+  
+  ## Requisitos
+  - Requiere token **ADMIN**.
+  - El ID generado se guarda en la variable `funkoId`.
+}
+
 auth:bearer {
   token: {{adminToken}}
 }

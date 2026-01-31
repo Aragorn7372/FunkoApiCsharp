@@ -10,6 +10,15 @@ post {
   auth: none
 }
 
+docs {
+  # Categoria - Unauthorized Create
+  
+  Verifica que no se pueda crear una categoría sin autenticación.
+  
+  ## Respuesta Esperada
+  - **401 Unauthorized**: No se proporcionó token.
+}
+
 body:json {
   {
     "nombre": "Test Category",
