@@ -1,0 +1,5 @@
+<map id="FunkoApi.Repository.Category.ICategoryRepository" name="FunkoApi.Repository.Category.ICategoryRepository">
+<area shape="rect" id="Node000001" title="Interfaz específica para el repositorio de categorías. Extiende de IRepository para operaciones básic..." alt="" coords="5,93,224,133"/>
+<area shape="rect" id="Node000002" href="$interfaceFunkoApi_1_1Repository_1_1IRepository.html" title=" " alt="" coords="25,5,204,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,59,117,93,112,93,112,59"/>
+</map>

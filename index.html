@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dawazon: FunkoApi 🎮✨</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Dawazon<span id="projectnumber">&#160;0.1</span>
+   </div>
+   <div id="projectbrief">Tienda bien bacana</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title"><a class="el" href="namespaceFunkoApi.html">FunkoApi</a> 🎮✨ </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__2home_2runner_2work_2FunkoApiCsharp_2FunkoApiCsharp_2README"></a> <img src="https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge&amp;logo=dotnet" alt=".NET" class="inline"/> <img src="https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&amp;logo=graphql&amp;logoColor=white" alt="GraphQL" class="inline"/> <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&amp;logo=postgresql&amp;logoColor=white" alt="PostgreSQL" class="inline"/> <img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&amp;logo=redis&amp;logoColor=white" alt="Redis" style="pointer-events: none;" class="inline"/> <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&amp;logo=docker&amp;logoColor=white" alt="Docker" style="pointer-events: none;" class="inline"/></p>
+<p>Una API robusta y moderna para la gestión de colecciones de Funkos, construida con <b>ASP.NET Core 10</b>. Ofrece soporte completo para consultas <b>GraphQL</b> y endpoints <b>REST</b>, integrando autenticación JWT, caché distribuida con Redis y persistencia en PostgreSQL.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md2"></a>
+🚀 Tecnologías Core</h1>
+<ul>
+<li><b>Framework:</b> .NET 10.0 (ASP.NET Core Web API)</li>
+<li><b>API:</b> GraphQL (HotChocolate) &amp; REST Controllers</li>
+<li><b>Base de Datos:</b> PostgreSQL (Entity Framework Core)</li>
+<li><b>Caché:</b> Redis (Distributed Cache)</li>
+<li><b>Autenticación:</b> JWT (JSON Web Tokens)</li>
+<li><b>Mensajería:</b> WebSockets para notificaciones en tiempo real</li>
+<li><b>logging:</b> Serilog &amp; NLog</li>
+<li><b>Testing:</b> xUnit, FluentAssertions, y Bruno (para tests de API)</li>
+<li><b>Despliegue:</b> Docker &amp; Docker Compose</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md4"></a>
+🛠️ Características Principales</h1>
+<ul>
+<li><b>Multi-API:</b> Accede a tus datos vía REST o mediante el potente lenguaje de consulta GraphQL.</li>
+<li><b>Autenticación y Autorización:</b> Seguridad basada en roles con JWT y hashing de contraseñas (BCrypt).</li>
+<li><b>Notificaciones en tiempo real:</b> Implementación de WebSockets para actualizaciones instantáneas.</li>
+<li><b>Optimización:</b> Caché distribuida para mejorar los tiempos de respuesta.</li>
+<li><b>Gestión de Archivos:</b> Servicio de almacenamiento integrado para imágenes de Funkos.</li>
+<li><b>Resiliencia:</b> Manejo global de excepciones y rate limiting integrado.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md6"></a>
+📂 Estructura del Proyecto</h1>
+<div class="fragment"><div class="line">FunkoApi/</div>
+<div class="line">├── FunkoApi/               # Código fuente principal de la API</div>
+<div class="line">│   ├── Controllers/        # Endpoints REST</div>
+<div class="line">│   ├── Graphql/            # Queries, Mutations y Tipos de GraphQL</div>
+<div class="line">│   ├── Data/               # Contexto de BD y Migraciones</div>
+<div class="line">│   ├── Models/             # Entidades del dominio</div>
+<div class="line">│   ├── Service/            # Lógica de negocio</div>
+<div class="line">│   ├── Repository/         # Capa de acceso a datos</div>
+<div class="line">│   └── Infrastructures/    # Configuraciones de DI y servicios externos</div>
+<div class="line">├── TestFunko/              # Tests Unitarios e Integración (.NET)</div>
+<div class="line">├── TestBruno/              # Colecciones de tests para Bruno (GraphQL/REST)</div>
+<div class="line">└── compose.yaml            # Configuración de Docker Multi-contenedor</div>
+</div><!-- fragment --><hr  />
+<h1><a class="anchor" id="autotoc_md8"></a>
+🏁 Empezando</h1>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Requisitos Previos</h2>
+<ul>
+<li><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a></li>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/10.0">.NET 10 SDK</a> (opcional para desarrollo local)</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Configuración Rápida (Docker)</h2>
+<p>La forma más sencilla de ejecutar el ecosistema completo es usando Docker Compose:</p>
+<ol type="1">
+<li>Clona el repositorio.</li>
+<li>Asegúrate de tener un archivo <code>.env</code> configurado (ver <code>.env.example</code>).</li>
+<li>Ejecuta el comando: <div class="fragment"><div class="line">docker-compose up --build</div>
+</div><!-- fragment --></li>
+</ol>
+<p>La API estará disponible en <code><a href="http://localhost:8080">http://localhost:8080</a></code>.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md12"></a>
+🔍 Explorando la API</h1>
+<h2><a class="anchor" id="autotoc_md13"></a>
+GraphQL (Recomendado)</h2>
+<p>Puedes interactuar con la API GraphQL y explorar el esquema usando el playground integrado (<b>Banana Cake Pop</b>):</p><ul>
+<li><b>URL:</b> <code><a href="http://localhost:8080/graphql">http://localhost:8080/graphql</a></code></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md14"></a>
+REST</h2>
+<p>Los endpoints clásicos están disponibles bajo la ruta <code>/api</code>.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md16"></a>
+🧪 Testing</h1>
+<h2><a class="anchor" id="autotoc_md17"></a>
+Tests de C</h2>
+<p>Ejecuta los tests unitarios y de integración desde la terminal: </p><div class="fragment"><div class="line">dotnet test</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+Tests de Bruno (API)</h2>
+<p>El proyecto incluye una configuración automática para ejecutar tests de Bruno en Docker. Los reportes se generan en el puerto <code>8060</code>.</p>
+<h1><a class="anchor" id="autotoc_md19"></a>
+👨‍💻 Autor</h1>
+<div align="center"> <table class="doxtable">
+<tr>
+<td align="center"><a href="https://github.com/Aragorn7372"><img src="https://github.com/Aragorn7372.png" alt="" width="100px;" style="border-radius: 50%" class="inline"/> </a><br  />
+ <sub><b>Aragorn7372</b></sub><br  />
+ <a href="https://github.com/Aragorn7372" title="GitHub"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub" class="inline"/> </a>   </td></tr>
+</table>
+</div><hr  />
+<h1><a class="anchor" id="autotoc_md21"></a>
+📝 Licencia</h1>
+<p>Este proyecto está bajo la Licencia MIT. ¡Siéntete libre de contribuir! </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

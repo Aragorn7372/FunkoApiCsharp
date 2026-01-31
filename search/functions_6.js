@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['handleconnectionasync_5fwhensocketisclosed_5fshouldaddandremoveconnection_0',['handleconnectionasync_whensocketisclosed_shouldaddandremoveconnection',['../classTestFunko_1_1unit_1_1webSocket_1_1CategoriaWebSocketHandlerTests.html#a587d0b456e4c28aabb4d8d33bb01ea87',1,'TestFunko.unit.webSocket.CategoriaWebSocketHandlerTests.HandleConnectionAsync_WhenSocketIsClosed_ShouldAddAndRemoveConnection()'],['../classTestFunko_1_1unit_1_1webSocket_1_1FunkosWebSocketHandlerTests.html#ae670b8f97cdc19e2dbf899e0ea35866d',1,'TestFunko.unit.webSocket.FunkosWebSocketHandlerTests.HandleConnectionAsync_WhenSocketIsClosed_ShouldAddAndRemoveConnection()']]]
+];

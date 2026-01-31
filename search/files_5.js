@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['filesystemstorageservicetests_2ecs_0',['FileSystemStorageServiceTests.cs',['../FileSystemStorageServiceTests_8cs.html',1,'']]],
+  ['folder_2ebru_1',['folder.bru',['../Security_2folder_8bru.html',1,'(Espacio de nombres global)'],['../GraphQL_2Funkos_2folder_8bru.html',1,'(Espacio de nombres global)'],['../GraphQL_2folder_8bru.html',1,'(Espacio de nombres global)'],['../GraphQL_2Categorias_2folder_8bru.html',1,'(Espacio de nombres global)'],['../Funkos_2folder_8bru.html',1,'(Espacio de nombres global)'],['../Categoria_2folder_8bru.html',1,'(Espacio de nombres global)'],['../Auth_2folder_8bru.html',1,'(Espacio de nombres global)']]],
+  ['funko_2ecs_2',['funko.cs',['../Models_2Funko_8cs.html',1,'(Espacio de nombres global)'],['../Graphql_2Types_2Funko_8cs.html',1,'(Espacio de nombres global)']]],
+  ['funkodbcontext_2ecs_3',['FunkoDbContext.cs',['../FunkoDbContext_8cs.html',1,'']]],
+  ['funkodtotests_2ecs_4',['FunkoDtoTests.cs',['../FunkoDtoTests_8cs.html',1,'']]],
+  ['funkoerror_2ecs_5',['FunkoError.cs',['../FunkoError_8cs.html',1,'']]],
+  ['funkoevent_2ecs_6',['FunkoEvent.cs',['../FunkoEvent_8cs.html',1,'']]],
+  ['funkoinputs_2ecs_7',['FunkoInputs.cs',['../FunkoInputs_8cs.html',1,'']]],
+  ['funkomutations_2ecs_8',['FunkoMutations.cs',['../FunkoMutations_8cs.html',1,'']]],
+  ['funkomutationstests_2ecs_9',['FunkoMutationsTests.cs',['../FunkoMutationsTests_8cs.html',1,'']]],
+  ['funkopatchrequestdto_2ecs_10',['FunkoPatchRequestDto.cs',['../FunkoPatchRequestDto_8cs.html',1,'']]],
+  ['funkoqueries_2ecs_11',['FunkoQueries.cs',['../FunkoQueries_8cs.html',1,'']]],
+  ['funkoqueriestests_2ecs_12',['FunkoQueriesTests.cs',['../FunkoQueriesTests_8cs.html',1,'']]],
+  ['funkorepository_2ecs_13',['FunkoRepository.cs',['../FunkoRepository_8cs.html',1,'']]],
+  ['funkorequestdto_2ecs_14',['FunkoRequestDto.cs',['../FunkoRequestDto_8cs.html',1,'']]],
+  ['funkoresponsedto_2ecs_15',['FunkoResponseDto.cs',['../FunkoResponseDto_8cs.html',1,'']]],
+  ['funkoscontroller_2ecs_16',['FunkosController.cs',['../FunkosController_8cs.html',1,'']]],
+  ['funkoscontrollertests_2ecs_17',['FunkosControllerTests.cs',['../FunkosControllerTests_8cs.html',1,'']]],
+  ['funkoservice_2ecs_18',['FunkoService.cs',['../FunkoService_8cs.html',1,'']]],
+  ['funkoservicetest_2ecs_19',['FunkoServiceTest.cs',['../FunkoServiceTest_8cs.html',1,'']]],
+  ['funkosmapper_2ecs_20',['FunkosMapper.cs',['../FunkosMapper_8cs.html',1,'']]],
+  ['funkosmappertests_2ecs_21',['FunkosMapperTests.cs',['../FunkosMapperTests_8cs.html',1,'']]],
+  ['funkosuscription_2ecs_22',['FunkoSuscription.cs',['../FunkoSuscription_8cs.html',1,'']]],
+  ['funkoswebsockethandler_2ecs_23',['FunkosWebSocketHandler.cs',['../FunkosWebSocketHandler_8cs.html',1,'']]],
+  ['funkoswebsockethandlertests_2ecs_24',['FunkosWebSocketHandlerTests.cs',['../FunkosWebSocketHandlerTests_8cs.html',1,'']]]
+];

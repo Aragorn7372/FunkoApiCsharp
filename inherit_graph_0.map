@@ -1,0 +1,7 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,42,144,67"/>
+<area shape="rect" id="Node000001" href="$classTestFunko_1_1IntegrationTestCategoryAttribute.html" title="Atributo para tests de integración." alt="" coords="199,5,385,45"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="158,41,198,35,199,41,158,46"/>
+<area shape="rect" id="Node000002" href="$classTestFunko_1_1UnitTestAttribute.html" title="Atributo para tests unitarios." alt="" coords="192,70,392,95"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="158,63,194,67,193,73,158,68"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="FunkoApi.Data.ITimestamped" name="FunkoApi.Data.ITimestamped">
+<area shape="rect" id="Node000001" title="Interfaz de auditoría para entidades. Implementada por: Categoria, Producto, User,..." alt="" coords="5,5,220,31"/>
+<area shape="rect" id="Node000002" href="$classFunkoApi_1_1Models_1_1User.html" title="Entidad de dominio que representa un usuario. Autenticación con email/password hasheado con BCrypt...." alt="" coords="29,79,196,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,44,115,79,110,79,110,44"/>
+</map>

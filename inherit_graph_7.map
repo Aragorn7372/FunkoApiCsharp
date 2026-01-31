@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$interfaceFunkoApi_1_1Graphql_1_1Publishers_1_1IEventPublisher.html" title="Interfaz para publicar eventos en el bus de eventos de GraphQL." alt="" coords="5,5,216,45"/>
+<area shape="rect" id="Node000001" href="$classFunkoApi_1_1Graphql_1_1Publishers_1_1EventPublisher.html" title="Implementación de IEventPublisher usando HotChocolate Pub/Sub." alt="" coords="264,5,475,45"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="230,23,264,23,264,28,230,28"/>
+</map>

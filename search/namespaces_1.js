@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['testfunko_0',['TestFunko',['../namespaceTestFunko.html',1,'']]],
+  ['testfunko_3a_3aintegracion_1',['integracion',['../namespaceTestFunko_1_1integracion.html',1,'TestFunko']]],
+  ['testfunko_3a_3aunit_2',['unit',['../namespaceTestFunko_1_1unit.html',1,'TestFunko']]],
+  ['testfunko_3a_3aunit_3a_3aauth_3',['auth',['../namespaceTestFunko_1_1unit_1_1auth.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3acategoria_4',['categoria',['../namespaceTestFunko_1_1unit_1_1categoria.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3acontrollers_5',['controllers',['../namespaceTestFunko_1_1unit_1_1controllers.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3adtos_6',['dtos',['../namespaceTestFunko_1_1unit_1_1dtos.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3afunko_7',['funko',['../namespaceTestFunko_1_1unit_1_1funko.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3agraphql_8',['graphql',['../namespaceTestFunko_1_1unit_1_1graphql.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3amail_9',['mail',['../namespaceTestFunko_1_1unit_1_1mail.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3amappers_10',['mappers',['../namespaceTestFunko_1_1unit_1_1mappers.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3amiddleware_11',['middleware',['../namespaceTestFunko_1_1unit_1_1middleware.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3astorage_12',['storage',['../namespaceTestFunko_1_1unit_1_1storage.html',1,'TestFunko::unit']]],
+  ['testfunko_3a_3aunit_3a_3awebsocket_13',['webSocket',['../namespaceTestFunko_1_1unit_1_1webSocket.html',1,'TestFunko::unit']]],
+  ['tiendaapi_14',['TiendaApi',['../namespaceTiendaApi.html',1,'']]],
+  ['tiendaapi_3a_3aapi_15',['Api',['../namespaceTiendaApi_1_1Api.html',1,'TiendaApi']]],
+  ['tiendaapi_3a_3aapi_3a_3aservices_16',['Services',['../namespaceTiendaApi_1_1Api_1_1Services.html',1,'TiendaApi::Api']]],
+  ['tiendaapi_3a_3aapi_3a_3aservices_3a_3aauth_17',['Auth',['../namespaceTiendaApi_1_1Api_1_1Services_1_1Auth.html',1,'TiendaApi::Api::Services']]],
+  ['tiendaapi_3a_3aapi_3a_3aservices_3a_3aemail_18',['Email',['../namespaceTiendaApi_1_1Api_1_1Services_1_1Email.html',1,'TiendaApi::Api::Services']]]
+];

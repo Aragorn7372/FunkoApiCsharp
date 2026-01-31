@@ -1,0 +1,11 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,109,92,134"/>
+<area shape="rect" id="Node000001" href="$classFunkoApi_1_1exception_1_1FileNotFoundStorageException.html" title="Excepción lanzada cuando el archivo no existe." alt="" coords="142,5,341,45"/>
+<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="74,98,104,76,139,55,167,43,169,48,141,60,107,80,77,102"/>
+<area shape="rect" id="Node000002" href="$classFunkoApi_1_1exception_1_1FileSizeExceededException.html" title="Excepción lanzada cuando el archivo excede el tamaño máximo permitido." alt="" coords="140,69,343,109"/>
+<area shape="poly" id="edge5_Node000000_Node000002" title=" " alt="" coords="105,109,139,104,140,109,106,115"/>
+<area shape="rect" id="Node000003" href="$classFunkoApi_1_1exception_1_1InvalidFileTypeException.html" title="Excepción lanzada cuando el tipo de archivo no está permitido." alt="" coords="143,133,340,173"/>
+<area shape="poly" id="edge6_Node000000_Node000003" title=" " alt="" coords="106,128,143,134,142,140,105,133"/>
+<area shape="rect" id="Node000004" href="$classFunkoApi_1_1exception_1_1StorageException.html" title="Excepción lanzada cuando hay un error de almacenamiento." alt="" coords="140,197,343,237"/>
+<area shape="poly" id="edge7_Node000000_Node000004" title=" " alt="" coords="77,141,107,163,141,183,169,195,167,200,139,188,104,167,74,145"/>
+</map>

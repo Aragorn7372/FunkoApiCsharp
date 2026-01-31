@@ -1,0 +1,5 @@
+<map id="FunkoApi.Repository.funkos.IFunkoRepository" name="FunkoApi.Repository.funkos.IFunkoRepository">
+<area shape="rect" id="Node000001" title="Interfaz específica para el repositorio de Funkos. Extiende de IRepository para operaciones básicas y..." alt="" coords="5,93,209,133"/>
+<area shape="rect" id="Node000002" href="$interfaceFunkoApi_1_1Repository_1_1IRepository.html" title=" " alt="" coords="31,5,184,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,59,110,93,105,93,105,59"/>
+</map>

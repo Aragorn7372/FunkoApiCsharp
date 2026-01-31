@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,96,31"/>
+<area shape="rect" id="Node000001" href="$classFunkoApi_1_1config_1_1FunkoDbContext.html" title="Contexto de base de datos para la aplicación FunkoApi. Define las tablas, relaciones y datos iniciale..." alt="" coords="144,5,379,31"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="110,15,144,15,144,21,110,21"/>
+</map>

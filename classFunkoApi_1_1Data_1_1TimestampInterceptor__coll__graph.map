@@ -1,0 +1,5 @@
+<map id="FunkoApi.Data.TimestampInterceptor" name="FunkoApi.Data.TimestampInterceptor">
+<area shape="rect" id="Node000001" title="Interceptor de EF Core que asigna CreatedAt y UpdatedAt automáticamente." alt="" coords="5,79,271,104"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="47,5,229,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,44,141,79,135,79,135,44"/>
+</map>

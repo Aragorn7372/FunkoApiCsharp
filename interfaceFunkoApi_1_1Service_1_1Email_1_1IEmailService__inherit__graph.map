@@ -1,0 +1,5 @@
+<map id="FunkoApi.Service.Email.IEmailService" name="FunkoApi.Service.Email.IEmailService">
+<area shape="rect" id="Node000001" title="Contrato del servicio de email." alt="" coords="12,5,231,45"/>
+<area shape="rect" id="Node000002" href="$classFunkoApi_1_1Service_1_1Email_1_1MemoryEmailService.html" title="Implementación de IEmailService para desarrollo que solo loguea los emails." alt="" coords="5,93,237,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,59,124,93,119,93,119,59"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="TiendaApi.Api.Services.Auth.IJwtTokenExtractor" name="TiendaApi.Api.Services.Auth.IJwtTokenExtractor">
+<area shape="rect" id="Node000001" title="Interfaz para extraer información de tokens JWT." alt="" coords="5,5,215,45"/>
+<area shape="rect" id="Node000002" href="$classFunkoApi_1_1Service_1_1auth_1_1JwtTokenExtractor.html" title="Implementación de IJwtTokenExtractor para extraer información de tokens JWT." alt="" coords="15,93,205,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,59,113,93,107,93,107,59"/>
+</map>

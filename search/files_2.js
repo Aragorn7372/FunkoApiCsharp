@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['cacheconfig_2ecs_0',['CacheConfig.cs',['../CacheConfig_8cs.html',1,'']]],
+  ['cacheservice_2ecs_1',['CacheService.cs',['../CacheService_8cs.html',1,'']]],
+  ['categoria_2ecs_2',['Categoria.cs',['../Categoria_8cs.html',1,'']]],
+  ['categoriacontroller_2ecs_3',['CategoriaController.cs',['../CategoriaController_8cs.html',1,'']]],
+  ['categoriacontrollertests_2ecs_4',['CategoriaControllerTests.cs',['../CategoriaControllerTests_8cs.html',1,'']]],
+  ['categoriadtotests_2ecs_5',['CategoriaDtoTests.cs',['../CategoriaDtoTests_8cs.html',1,'']]],
+  ['categoriaerror_2ecs_6',['CategoriaError.cs',['../CategoriaError_8cs.html',1,'']]],
+  ['categoriamapper_2ecs_7',['CategoriaMapper.cs',['../CategoriaMapper_8cs.html',1,'']]],
+  ['categoriamappertests_2ecs_8',['CategoriaMapperTests.cs',['../CategoriaMapperTests_8cs.html',1,'']]],
+  ['categoriarequestdto_2ecs_9',['CategoriaRequestDto.cs',['../CategoriaRequestDto_8cs.html',1,'']]],
+  ['categoriaresponsedto_2ecs_10',['CategoriaResponseDto.cs',['../CategoriaResponseDto_8cs.html',1,'']]],
+  ['categoriaservice_2ecs_11',['CategoriaService.cs',['../CategoriaService_8cs.html',1,'']]],
+  ['categoriawebsockethandler_2ecs_12',['CategoriaWebSocketHandler.cs',['../CategoriaWebSocketHandler_8cs.html',1,'']]],
+  ['categoriawebsockethandlertests_2ecs_13',['CategoriaWebSocketHandlerTests.cs',['../CategoriaWebSocketHandlerTests_8cs.html',1,'']]],
+  ['categoryrepository_2ecs_14',['CategoryRepository.cs',['../CategoryRepository_8cs.html',1,'']]],
+  ['categoryservicetest_2ecs_15',['CategoryServiceTest.cs',['../CategoryServiceTest_8cs.html',1,'']]],
+  ['categorytype_2ecs_16',['CategoryType.cs',['../CategoryType_8cs.html',1,'']]],
+  ['controllersconfig_2ecs_17',['ControllersConfig.cs',['../ControllersConfig_8cs.html',1,'']]],
+  ['corsconfig_2ecs_18',['CorsConfig.cs',['../CorsConfig_8cs.html',1,'']]],
+  ['corsextensions_2ecs_19',['CorsExtensions.cs',['../CorsExtensions_8cs.html',1,'']]],
+  ['create_2ebru_20',['create.bru',['../create_8bru.html',1,'']]],
+  ['createfunko_2ebru_21',['CreateFunko.bru',['../CreateFunko_8bru.html',1,'']]],
+  ['createwithimage_2ebru_22',['createWithImage.bru',['../createWithImage_8bru.html',1,'']]]
+];

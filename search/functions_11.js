@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['unittestattribute_0',['UnitTestAttribute',['../classTestFunko_1_1UnitTestAttribute.html#a64e6d72f2cd17d3d297496f001d4da78',1,'TestFunko::UnitTestAttribute']]],
+  ['updateasync_1',['updateasync',['../interfaceFunkoApi_1_1Repository_1_1Category_1_1ICategoryRepository.html#a1aadbc6127d2568ba6b1322b116a06d5',1,'FunkoApi.Repository.Category.ICategoryRepository.UpdateAsync()'],['../interfaceFunkoApi_1_1Repository_1_1funkos_1_1IFunkoRepository.html#a26091c700b26b79ba68430b2b1e3a89f',1,'FunkoApi.Repository.funkos.IFunkoRepository.UpdateAsync()'],['../interfaceFunkoApi_1_1Repository_1_1Users_1_1IUserRepository.html#af7b0a776b4828bf6b878347cb4a78fa6',1,'FunkoApi.Repository.Users.IUserRepository.UpdateAsync()']]],
+  ['updatecategoriaasync_2',['UpdateCategoriaAsync',['../interfaceFunkoApi_1_1Service_1_1Category_1_1ICategoriaService.html#a2fa698dd1d7cbfec8995b73def38d7bf',1,'FunkoApi::Service::Category::ICategoriaService']]],
+  ['updatecategoriaasync_5fwheniddoesnotexist_5fshouldreturnfailure_3',['UpdateCategoriaAsync_WhenIdDoesNotExist_ShouldReturnFailure',['../classTestFunko_1_1unit_1_1categoria_1_1CategoriaServiceTest.html#a67827552bc5597b616316e09b6331221',1,'TestFunko::unit::categoria::CategoriaServiceTest']]],
+  ['updatefunko_4',['UpdateFunko',['../classFunkoApi_1_1Graphql_1_1Mutations_1_1FunkoMutation.html#aa2fd0ebd1c3dbc2b867633a10480e2c2',1,'FunkoApi::Graphql::Mutations::FunkoMutation']]],
+  ['updatefunko_5fwhenfunkonotfound_5fshouldthrowgraphqlexception_5',['UpdateFunko_WhenFunkoNotFound_ShouldThrowGraphQLException',['../classTestFunko_1_1unit_1_1graphql_1_1FunkoMutationsTests.html#a9a53d3e72eebb5344cf5ea1f04b1836d',1,'TestFunko::unit::graphql::FunkoMutationsTests']]],
+  ['updatefunko_5fwhensuccess_5fshouldreturnupdatedresponsedto_6',['UpdateFunko_WhenSuccess_ShouldReturnUpdatedResponseDto',['../classTestFunko_1_1unit_1_1graphql_1_1FunkoMutationsTests.html#a29087b51b67e8ef104c998cb2af48a5e',1,'TestFunko::unit::graphql::FunkoMutationsTests']]],
+  ['updatefunkoasync_7',['UpdateFunkoAsync',['../interfaceFunkoApi_1_1Service_1_1Funkos_1_1IFunkoService.html#a2af7414a531d7f6c4f04afa4394c33c9',1,'FunkoApi::Service::Funkos::IFunkoService']]],
+  ['updatefunkoasync_5fshouldupdateandnotify_5fwhenfoundandvalid_8',['UpdateFunkoAsync_ShouldUpdateAndNotify_WhenFoundAndValid',['../classTestFunko_1_1unit_1_1funko_1_1FunkoServiceTests.html#a398ac5f07a84151a0576bb6a4fd00699',1,'TestFunko::unit::funko::FunkoServiceTests']]],
+  ['useauthentication_9',['UseAuthentication',['../Program_8cs.html#a6435d8beeff4999dc0b0c6d60a86a4e2',1,'Program.cs']]],
+  ['useauthorization_10',['UseAuthorization',['../Program_8cs.html#af6f72d752b2e73aa0292f74bd13237ab',1,'Program.cs']]],
+  ['usecorspolicy_11',['UseCorsPolicy',['../Program_8cs.html#a169ac37af3074306b50a4154ab634a2f',1,'Program.cs']]],
+  ['useglobalexceptionhandler_12',['UseGlobalExceptionHandler',['../Program_8cs.html#a352d68b2c7d34cd0d574c53f302c7770',1,'Program.cs']]],
+  ['usegraphiql_13',['UseGraphiQL',['../Program_8cs.html#a5e7b3522817423708a3cc80b4acf3a23',1,'Program.cs']]],
+  ['usehttpsredirection_14',['UseHttpsRedirection',['../Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9',1,'Program.cs']]],
+  ['userdto_15',['UserDto',['../namespaceFunkoApi_1_1Dto_1_1Users.html#ab27cfc48b6d84523609f72f491f47309',1,'FunkoApi::Dto::Users']]],
+  ['userdto_5fshouldpreservevaluesfromconstructor_16',['UserDto_ShouldPreserveValuesFromConstructor',['../classTestFunko_1_1unit_1_1dtos_1_1UserDtoTests.html#aaae1785d2d0b0b0a543da35e36c7b672',1,'TestFunko::unit::dtos::UserDtoTests']]],
+  ['useserilog_17',['UseSerilog',['../Program_8cs.html#a581fb38d7c44cbe2c57d1a89e40f7a2f',1,'Program.cs']]],
+  ['usestaticfiles_18',['UseStaticFiles',['../Program_8cs.html#a906a3ce545279a7a73941f1d7b64d7cf',1,'Program.cs']]],
+  ['usewebsockets_19',['UseWebSockets',['../Program_8cs.html#a602eef420817a521ab9857bf938fb964',1,'Program.cs']]]
+];

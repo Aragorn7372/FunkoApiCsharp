@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$interfaceFunkoApi_1_1Repository_1_1IRepository.html" title=" " alt="" coords="5,5,236,45"/>
+<area shape="rect" id="Node000001" href="$interfaceFunkoApi_1_1Repository_1_1funkos_1_1IFunkoRepository.html" title="Interfaz específica para el repositorio de Funkos. Extiende de IRepository para operaciones básicas y..." alt="" coords="284,5,488,45"/>
+<area shape="poly" id="edge11_Node000000_Node000001" title=" " alt="" coords="250,23,284,23,284,28,250,28"/>
+</map>
