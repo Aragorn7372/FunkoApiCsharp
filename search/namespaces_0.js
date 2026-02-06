@@ -35,5 +35,6 @@ var searchData=
   ['funkoapi_3a_3aservice_3a_3acache_32',['Cache',['../namespaceFunkoApi_1_1Service_1_1Cache.html',1,'FunkoApi::Service']]],
   ['funkoapi_3a_3aservice_3a_3acategory_33',['Category',['../namespaceFunkoApi_1_1Service_1_1Category.html',1,'FunkoApi::Service']]],
   ['funkoapi_3a_3aservice_3a_3aemail_34',['Email',['../namespaceFunkoApi_1_1Service_1_1Email.html',1,'FunkoApi::Service']]],
-  ['funkoapi_3a_3aservice_3a_3afunkos_35',['Funkos',['../namespaceFunkoApi_1_1Service_1_1Funkos.html',1,'FunkoApi::Service']]]
+  ['funkoapi_3a_3aservice_3a_3afunkos_35',['Funkos',['../namespaceFunkoApi_1_1Service_1_1Funkos.html',1,'FunkoApi::Service']]],
+  ['funkoapi_3a_3aservice_3a_3astorage_36',['storage',['../namespaceFunkoApi_1_1Service_1_1storage.html',1,'FunkoApi::Service']]]
 ];

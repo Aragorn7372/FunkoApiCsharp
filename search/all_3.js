@@ -55,7 +55,7 @@ var searchData=
   ['corsconfig_2ecs_52',['CorsConfig.cs',['../CorsConfig_8cs.html',1,'']]],
   ['corsextensions_2ecs_53',['CorsExtensions.cs',['../CorsExtensions_8cs.html',1,'']]],
   ['create_2ebru_54',['create.bru',['../create_8bru.html',1,'']]],
-  ['created_55',['created',['../classFunkoApi_1_1Handler_1_1Categorias_1_1CategoriaNotificationType.html#a0ed64b9be784e11e53194876bbb9a4fc',1,'FunkoApi.Handler.Categorias.CategoriaNotificationType.CREATED'],['../classFunkoApi_1_1Handler_1_1Funkos_1_1FunkoNotificationType.html#a650e4eaabb6795e0290ee6b659548d79',1,'FunkoApi.Handler.Funkos.FunkoNotificationType.Created']]],
+  ['created_55',['created',['../classFunkoApi_1_1Handler_1_1Funkos_1_1FunkoNotificationType.html#a650e4eaabb6795e0290ee6b659548d79',1,'FunkoApi.Handler.Funkos.FunkoNotificationType.Created'],['../classFunkoApi_1_1Handler_1_1Categorias_1_1CategoriaNotificationType.html#a0ed64b9be784e11e53194876bbb9a4fc',1,'FunkoApi.Handler.Categorias.CategoriaNotificationType.CREATED']]],
   ['createdat_56',['createdat',['../classFunkoApi_1_1Models_1_1User.html#ace28678580b1734389dd4d0fa0523c6e',1,'FunkoApi.Models.User.CreatedAt'],['../interfaceFunkoApi_1_1Data_1_1ITimestamped.html#a5b24a21432f3e048d154d7c5cebe5f0c',1,'FunkoApi.Data.ITimestamped.CreatedAt']]],
   ['createfunko_57',['Createfunko',['../classFunkoApi_1_1Graphql_1_1Mutations_1_1FunkoMutation.html#ad7d8b7bf064e3b269efc60f1be8b1654',1,'FunkoApi::Graphql::Mutations::FunkoMutation']]],
   ['createfunko_2ebru_58',['CreateFunko.bru',['../CreateFunko_8bru.html',1,'']]],

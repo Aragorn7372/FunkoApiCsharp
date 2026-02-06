@@ -1,3 +1,5 @@
 <map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
-<area shape="rect" id="Node000000" href="$classTestFunko_1_1integracion_1_1UserServiceIntegrationTests.html" title="Integration tests for AuthService using real database with Testcontainers." alt="" coords="5,5,203,45"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,187,31"/>
+<area shape="rect" id="Node000001" href="$classFunkoApi_1_1Data_1_1TimestampInterceptor.html" title="Interceptor de EF Core que asigna CreatedAt y UpdatedAt automáticamente." alt="" coords="235,5,500,31"/>
+<area shape="poly" id="edge16_Node000000_Node000001" title=" " alt="" coords="200,15,234,15,234,21,200,21"/>
 </map>

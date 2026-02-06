@@ -12,6 +12,7 @@ var searchData=
   ['ijwttokenextractor_2ecs_9',['IJwtTokenExtractor.cs',['../IJwtTokenExtractor_8cs.html',1,'']]],
   ['initializedatabaseasync_2ecs_10',['InitializeDatabaseAsync.cs',['../InitializeDatabaseAsync_8cs.html',1,'']]],
   ['irepository_2ecs_11',['IRepository.cs',['../IRepository_8cs.html',1,'']]],
-  ['itimestamped_2ecs_12',['ITimestamped.cs',['../ITimestamped_8cs.html',1,'']]],
-  ['iuserrepository_2ecs_13',['IUserRepository.cs',['../IUserRepository_8cs.html',1,'']]]
+  ['istorageservice_2ecs_12',['IStorageService.cs',['../IStorageService_8cs.html',1,'']]],
+  ['itimestamped_2ecs_13',['ITimestamped.cs',['../ITimestamped_8cs.html',1,'']]],
+  ['iuserrepository_2ecs_14',['IUserRepository.cs',['../IUserRepository_8cs.html',1,'']]]
 ];

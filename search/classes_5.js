@@ -15,6 +15,7 @@ var searchData=
   ['irepository_12',['IRepository',['../interfaceFunkoApi_1_1Repository_1_1IRepository.html',1,'FunkoApi::Repository']]],
   ['irepository_3c_20categoria_2c_20string_20_3e_13',['IRepository&lt; Categoria, string &gt;',['../interfaceFunkoApi_1_1Repository_1_1IRepository.html',1,'FunkoApi::Repository']]],
   ['irepository_3c_20funko_2c_20long_20_3e_14',['IRepository&lt; Funko, long &gt;',['../interfaceFunkoApi_1_1Repository_1_1IRepository.html',1,'FunkoApi::Repository']]],
-  ['itimestamped_15',['ITimestamped',['../interfaceFunkoApi_1_1Data_1_1ITimestamped.html',1,'FunkoApi::Data']]],
-  ['iuserrepository_16',['IUserRepository',['../interfaceFunkoApi_1_1Repository_1_1Users_1_1IUserRepository.html',1,'FunkoApi::Repository::Users']]]
+  ['istorageservice_15',['IStorageService',['../interfaceFunkoApi_1_1Service_1_1storage_1_1IStorageService.html',1,'FunkoApi::Service::storage']]],
+  ['itimestamped_16',['ITimestamped',['../interfaceFunkoApi_1_1Data_1_1ITimestamped.html',1,'FunkoApi::Data']]],
+  ['iuserrepository_17',['IUserRepository',['../interfaceFunkoApi_1_1Repository_1_1Users_1_1IUserRepository.html',1,'FunkoApi::Repository::Users']]]
 ];

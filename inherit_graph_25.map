@@ -1,5 +1,7 @@
 <map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,187,31"/>
-<area shape="rect" id="Node000001" href="$classFunkoApi_1_1Data_1_1TimestampInterceptor.html" title="Interceptor de EF Core que asigna CreatedAt y UpdatedAt automáticamente." alt="" coords="235,5,500,31"/>
-<area shape="poly" id="edge15_Node000000_Node000001" title=" " alt="" coords="200,15,234,15,234,21,200,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,100,56"/>
+<area shape="rect" id="Node000001" href="$classFunkoApi_1_1Graphql_1_1Types_1_1CategoryType.html" title="Tipo de GraphQL para la entidad Categoria." alt="" coords="148,5,419,31"/>
+<area shape="poly" id="edge14_Node000000_Node000001" title=" " alt="" coords="113,34,167,28,168,33,114,39"/>
+<area shape="rect" id="Node000002" href="$classFunkoApi_1_1Graphql_1_1Types_1_1FunkoType.html" title="Tipo de GraphQL para la entidad funko." alt="" coords="159,55,408,80"/>
+<area shape="poly" id="edge15_Node000000_Node000002" title=" " alt="" coords="114,47,162,52,161,57,113,52"/>
 </map>

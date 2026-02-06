@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$interfaceTiendaApi_1_1Api_1_1Services_1_1Auth_1_1IJwtTokenExtractor.html" title="Interfaz para extraer información de tokens JWT." alt="" coords="5,5,215,45"/>
+<area shape="rect" id="Node000001" href="$classFunkoApi_1_1Service_1_1auth_1_1JwtTokenExtractor.html" title="Implementación de IJwtTokenExtractor para extraer información de tokens JWT." alt="" coords="263,5,453,45"/>
+<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="229,23,262,23,262,28,229,28"/>
+</map>
